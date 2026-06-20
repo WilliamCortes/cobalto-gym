@@ -44,13 +44,7 @@
     "https://www.instagram.com/gymcobalto/",
     "https://www.facebook.com/p/Gym-Cobalto-61566247414088/"
   ],
-  "founder": { "@type": "Person", "name": "Edwin González" },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.1",
-    "bestRating": "5",
-    "ratingCount": "9"
-  }
+  "founder": { "@type": "Person", "name": "Edwin González" }
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -731,25 +725,55 @@ footer {
 }
 .wa-float:hover { animation:none; }
 
-/* ── RATING BADGE ─────────────────────────────────────── */
-.rating-strip {
-  display:flex; align-items:center; justify-content:center;
-  gap:40px; flex-wrap:wrap;
-  padding:32px;
-  background:rgba(22,163,74,.08);
+/* ── GALLERY ──────────────────────────────────────────── */
+.gallery-grid {
+  display:grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap:6px;
   border-radius:var(--radius-lg);
-  border:1px solid rgba(22,163,74,.2);
-  margin-bottom:60px;
+  overflow:hidden;
 }
-.rating-item { text-align:center; }
-.rating-stars { color:var(--gold); font-size:20px; letter-spacing:3px; }
-.rating-score { font-family:var(--ff-display); font-size:36px; color:var(--white); line-height:1; }
-.rating-label { font-size:12px; color:var(--mist); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
-.rating-badge-text {
-  font-family:var(--ff-display);
-  font-size:22px; color:var(--cobalt-bright); text-transform:uppercase;
+.gallery-item { overflow:hidden; position:relative; }
+.gallery-item:nth-child(1) { grid-column:1; grid-row:1/3; }
+.gallery-item:nth-child(2) { grid-column:2; grid-row:1; }
+.gallery-item:nth-child(3) { grid-column:3; grid-row:1; }
+.gallery-item:nth-child(4) { grid-column:2/4; grid-row:2; }
+.gallery-item img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter:brightness(.8) saturate(.85);
+  transition:transform .5s ease, filter .4s ease;
 }
-.rating-divider { width:1px; height:52px; background:rgba(255,255,255,.1); }
+.gallery-item:hover img {
+  transform:scale(1.06);
+  filter:brightness(.95) saturate(1.1);
+}
+.gallery-caption {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:16px;
+  background:linear-gradient(transparent, rgba(0,0,0,.65));
+  font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  color:rgba(255,255,255,.75); font-weight:600;
+  opacity:0; transition:opacity .3s;
+}
+.gallery-item:hover .gallery-caption { opacity:1; }
+
+/* ── INSTAGRAM EMBED ──────────────────────────────────── */
+.ig-embed-section {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:48px; align-items:center;
+}
+.ig-embed-text .eyebrow { margin-bottom:14px; }
+.ig-embed-text h2 { margin-bottom:20px; }
+.ig-embed-text p { font-size:16px; color:var(--mist); line-height:1.7; margin-bottom:28px; }
+.ig-frame-wrap {
+  border-radius:var(--radius-lg); overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  background:var(--ink3);
+  aspect-ratio:9/16; max-height:600px;
+}
+.ig-frame-wrap iframe { width:100%; height:100%; border:0; display:block; }
 
 /* ── RESPONSIVE ───────────────────────────────────────── */
 @media(max-width:900px){
@@ -761,6 +785,10 @@ footer {
   .footer-grid { grid-template-columns:1fr; gap:32px; }
   .hero-element { display:none; }
   .stat-divider { display:none; }
+  .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:200px 200px; }
+  .gallery-item:nth-child(1) { grid-column:1/3; grid-row:1; }
+  .gallery-item:nth-child(4) { grid-column:1/3; }
+  .ig-embed-section { grid-template-columns:1fr; gap:32px; }
   .nav-links { display:none; }
   .hamburger { display:flex; }
   .story-milestones { gap:16px; }
@@ -834,7 +862,7 @@ footer {
 
   <div class="hero-content">
     <div class="hero-badge">
-      🏆 &nbsp;#1 Gimnasio de Cachipay · 4.1 ⭐
+      🏆 &nbsp;#1 Gimnasio de Cachipay · Vía al Colegio Departamental
     </div>
     <h1 class="hero-h1">
       <span class="accent">FORJA</span><br>TU MEJOR<br>VERSIÓN
@@ -861,11 +889,6 @@ footer {
       <div class="stat">
         <div class="stat-num"><span>5</span>+</div>
         <div class="stat-label">Años de trayectoria</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-num"><span>4.1</span>⭐</div>
-        <div class="stat-label">Rating promedio</div>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
@@ -966,15 +989,15 @@ footer {
           <li>
             <div class="why-icon">🥇</div>
             <div>
-              <div class="why-point-title">El mejor calificado del pueblo</div>
-              <p class="why-point-desc">4.1 estrellas y el único gimnasio top-rated entre los 4 de Cachipay. Lo dicen nuestros propios afiliados, no nosotros.</p>
+              <div class="why-point-title">El #1 del pueblo</div>
+              <p class="why-point-desc">El único gimnasio en Cachipay con comunidad real, transformaciones documentadas y 5 años de presencia activa. Lo dicen nuestros propios afiliados, no nosotros.</p>
             </div>
           </li>
           <li>
             <div class="why-icon">📍</div>
             <div>
-              <div class="why-point-title">Frente al parque principal</div>
-              <p class="why-point-desc">Calle 3 #1-63, en el corazón del pueblo. Sin excusas de distancia: el gym más accesible de Cachipay en precio y ubicación.</p>
+              <div class="why-point-title">Vía al Colegio Departamental</div>
+              <p class="why-point-desc">Calle 3 #1-63, fácil de encontrar y fácil de llegar. Sin excusas de distancia: el gym más accesible de Cachipay en precio y ubicación.</p>
             </div>
           </li>
           <li>
@@ -1121,29 +1144,6 @@ footer {
 <section class="section">
   <div class="container">
 
-    <div class="rating-strip">
-      <div class="rating-item">
-        <div class="rating-stars">★★★★☆</div>
-        <div class="rating-score">4.1</div>
-        <div class="rating-label">Rating promedio</div>
-      </div>
-      <div class="rating-divider"></div>
-      <div class="rating-item">
-        <div class="rating-badge-text">#1 en Cachipay</div>
-        <div class="rating-label">Entre 4 gimnasios</div>
-      </div>
-      <div class="rating-divider"></div>
-      <div class="rating-item">
-        <div class="rating-score" style="color:var(--cobalt-bright)">9+</div>
-        <div class="rating-label">Reseñas verificadas</div>
-      </div>
-      <div class="rating-divider"></div>
-      <div class="rating-item">
-        <div class="rating-score">5+</div>
-        <div class="rating-label">Años de confianza</div>
-      </div>
-    </div>
-
     <div class="eyebrow">Testimonios</div>
     <h2 class="section-title">LO DICEN<br>NUESTROS AFILIADOS</h2>
 
@@ -1192,6 +1192,73 @@ footer {
   </div>
 </section>
 
+<!-- GALLERY -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="eyebrow">El ambiente</div>
+    <h2 class="section-title">HIERRO,<br>VERDE Y SUDOR</h2>
+    <p class="section-lead" style="margin-bottom:40px;">Un gym con carácter. Equipos reales, paisajes únicos y una comunidad que se ve en cada sesión.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=900&q=80&auto=format&fit=crop" alt="Sala de pesas Gym Cobalto" loading="lazy"/>
+        <div class="gallery-caption">Zona de musculación</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80&auto=format&fit=crop" alt="Entrenamiento Gym Cobalto" loading="lazy"/>
+        <div class="gallery-caption">Entrenamiento</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80&auto=format&fit=crop" alt="Funcional Gym Cobalto" loading="lazy"/>
+        <div class="gallery-caption">Funcional</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80&auto=format&fit=crop&crop=right" alt="Cardio Gym Cobalto" loading="lazy"/>
+        <div class="gallery-caption">Cardio & resistencia</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:32px;">
+      <a href="https://www.instagram.com/gymcobalto/" target="_blank" class="btn-secondary" style="display:inline-flex; gap:8px;">
+        💚 Ver galería completa en @gymcobalto
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM REEL -->
+<section class="section">
+  <div class="container">
+    <div class="ig-embed-section">
+      <div class="ig-embed-text">
+        <div class="eyebrow">En medios</div>
+        <h2 class="section-title">CREADORES<br>DE SUEÑOS</h2>
+        <p>Gym Cobalto fue elegido por el podcast local <strong style="color:var(--cobalt-bright)">"Creadores de Sueños"</strong> — la serie de @soyangiesol que visibiliza emprendimientos de Cachipay. Edwin González y su historia de 5 años construyendo desde cero.</p>
+        <p style="margin-top:16px;">"Fue creado hace cinco años por Edwin, un joven emprendedor y amante al deporte, quien empezó con un pequeño espacio para motivar a su pueblo..."</p>
+        <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://www.instagram.com/reel/DOZraPMDJHQ/" target="_blank" class="btn-primary">
+            Ver episodio completo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://www.instagram.com/gymcobalto/" target="_blank" class="btn-secondary">
+            @gymcobalto
+          </a>
+        </div>
+      </div>
+      <div class="ig-frame-wrap">
+        <iframe
+          src="https://www.instagram.com/reel/DOZraPMDJHQ/embed/"
+          allowtransparency="true"
+          allowfullscreen
+          scrolling="no"
+          title="Creadores de Sueños — Gym Cobalto ep. 6">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOUNDING STORY -->
 <section class="section section--alt">
   <div class="container">
@@ -1219,7 +1286,7 @@ footer {
           </div>
           <div class="milestone">
             <div class="milestone-num">#1</div>
-            <div class="milestone-label">Rating local</div>
+            <div class="milestone-label">Top Cachipay</div>
           </div>
           <div class="milestone">
             <div class="milestone-num">∞</div>
@@ -1244,7 +1311,7 @@ footer {
   <div class="container">
     <div class="eyebrow">Dónde estamos</div>
     <h2 class="section-title">EN EL CORAZÓN<br>DE CACHIPAY</h2>
-    <p class="section-lead">Frente al parque principal. El gym más céntrico y accesible del municipio.</p>
+    <p class="section-lead">Vía al Colegio Departamental, Calle 3 #1-63. El gym más accesible del municipio.</p>
 
     <div class="location-inner">
       <div class="map-container">
@@ -1286,7 +1353,7 @@ footer {
             <span class="loc-icon">🗺️</span>
             <div>
               <div class="loc-label">Referencia</div>
-              <div class="loc-val">Frente al parque principal · Centro de Cachipay</div>
+              <div class="loc-val">Vía al Colegio Departamental · Calle 3 #1-63</div>
             </div>
           </li>
           <li>
