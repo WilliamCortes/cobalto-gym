@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gym Cobalto · Identidad de Marca</title>
+<style>
+  :root {
+    --cobalto: #0047AB;
+    --cobalto-claro: #1E5FD8;
+    --cobalto-oscuro: #0A2A6B;
+    --negro: #0F0F0F;
+    --carbón: #1A1A1A;
+    --gris-claro: #E5E7EB;
+    --gris-medio: #9CA3AF;
+    --blanco: #F9FAFB;
+    --acento: #FFC107;
+    --acento-oscuro: #FF8C00;
+    --verde: #10B981;
+    --rojo: #EF4444;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--negro);
+    color: var(--blanco);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: 
+      radial-gradient(ellipse at 20% 30%, rgba(0, 71, 171, 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(255, 193, 7, 0.15) 0%, transparent 50%),
+      linear-gradient(180deg, #0A2A6B 0%, var(--negro) 100%);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(0,71,171,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,71,171,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; padding: 40px 24px; }
+  .hero-tag {
+    display: inline-block; padding: 6px 16px; border: 1px solid var(--cobalto-claro);
+    border-radius: 999px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--cobalto-claro); margin-bottom: 24px; background: rgba(0,71,171,0.1);
+  }
+  .hero h1 {
+    font-size: clamp(48px, 9vw, 120px);
+    font-weight: 900; letter-spacing: -3px; line-height: 0.95;
+    background: linear-gradient(135deg, #fff 0%, var(--cobalto-claro) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .hero h2 {
+    font-size: clamp(18px, 3vw, 28px); font-weight: 300; color: var(--gris-medio);
+    margin-bottom: 32px; letter-spacing: 1px;
+  }
+  .hero-pillars {
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 32px;
+  }
+  .hero-pillars span {
+    padding: 10px 20px; background: rgba(0,71,171,0.15); border: 1px solid rgba(0,71,171,0.3);
+    border-radius: 999px; font-size: 14px; font-weight: 500;
+  }
+  .scroll-indicator {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    color: var(--cobalto-claro); font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.6; }
+    50% { transform: translate(-50%, 10px); opacity: 1; }
+  }
+
+  /* SECTION */
+  section { padding: 80px 0; }
+  .section-title {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--cobalto-claro); font-weight: 600; margin-bottom: 12px;
+  }
+  .section-h2 {
+    font-size: clamp(32px, 5vw, 48px); font-weight: 800; letter-spacing: -1.5px;
+    margin-bottom: 16px; color: var(--blanco);
+  }
+  .section-lead {
+    font-size: 18px; color: var(--gris-medio); max-width: 700px;
+    margin-bottom: 48px; line-height: 1.7;
+  }
+
+  /* FICHA */
+  .ficha-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08);
+  }
+  .ficha-item { background: var(--negro); padding: 24px; }
+  .ficha-item .label {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--cobalto-claro); font-weight: 600; margin-bottom: 8px;
+  }
+  .ficha-item .value { font-size: 16px; color: var(--blanco); font-weight: 500; }
+  .ficha-item a { color: var(--blanco); text-decoration: none; border-bottom: 1px solid var(--cobalto-claro); }
+  .ficha-item a:hover { color: var(--cobalto-claro); }
+
+  /* ETIMOLOGÍA */
+  .etymology {
+    background: linear-gradient(135deg, var(--cobalto-oscuro) 0%, var(--negro) 100%);
+    border-radius: 24px; padding: 48px; margin: 48px 0;
+    border: 1px solid rgba(0,71,171,0.3);
+  }
+  .etymology h3 {
+    font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--cobalto-claro);
+  }
+  .etymology-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
+  }
+  @media (max-width: 768px) { .etymology-grid { grid-template-columns: 1fr; } }
+  .etymology-list { list-style: none; }
+  .etymology-list li {
+    padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .etymology-list li:last-child { border-bottom: none; }
+  .etymology-list .bullet {
+    color: var(--acento); font-weight: 700; font-size: 18px; flex-shrink: 0;
+  }
+  .co-badge {
+    width: 100%; aspect-ratio: 1; max-width: 240px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--cobalto) 0%, #002B6B 100%);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; box-shadow: 0 30px 60px rgba(0,71,171,0.4);
+    border: 4px solid rgba(255,255,255,0.1);
+  }
+  .co-symbol { font-size: 96px; font-weight: 900; color: white; line-height: 1; }
+  .co-meta { font-size: 12px; color: rgba(255,255,255,0.7); letter-spacing: 4px; margin-top: 4px; }
+
+  /* PALETA */
+  .palette-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin-top: 32px;
+  }
+  .color-card {
+    border-radius: 16px; overflow: hidden;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  }
+  .color-swatch { height: 140px; }
+  .color-info { padding: 16px; }
+  .color-info .name { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .color-info .hex { font-size: 13px; color: var(--gris-medio); font-family: monospace; }
+  .color-info .role { font-size: 12px; color: var(--cobalto-claro); margin-top: 8px; }
+
+  /* HASHTAGS */
+  .hashtags {
+    display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0;
+  }
+  .hashtag {
+    padding: 8px 16px; background: rgba(0,71,171,0.2); border: 1px solid var(--cobalto-claro);
+    border-radius: 999px; font-size: 14px; color: var(--cobalto-claro);
+  }
+
+  /* FODA */
+  .foda {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px; margin-top: 32px;
+  }
+  .foda-card {
+    padding: 28px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+  }
+  .foda-card h4 {
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 16px; font-weight: 700;
+  }
+  .foda-card.fortalezas { border-color: rgba(16, 185, 129, 0.4); }
+  .foda-card.fortalezas h4 { color: var(--verde); }
+  .foda-card.debilidades { border-color: rgba(239, 68, 68, 0.4); }
+  .foda-card.debilidades h4 { color: var(--rojo); }
+  .foda-card.oportunidades { border-color: rgba(0, 71, 171, 0.5); }
+  .foda-card.oportunidades h4 { color: var(--cobalto-claro); }
+  .foda-card.amenazas { border-color: rgba(255, 193, 7, 0.4); }
+  .foda-card.amenazas h4 { color: var(--acento); }
+  .foda-card ul { list-style: none; }
+  .foda-card li { padding: 8px 0; font-size: 14px; color: var(--gris-claro); }
+
+  /* FRASES */
+  .frases-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px; margin-top: 32px;
+  }
+  .frase {
+    padding: 28px; background: linear-gradient(135deg, rgba(0,71,171,0.15) 0%, rgba(0,71,171,0.05) 100%);
+    border-left: 4px solid var(--cobalto-claro); border-radius: 8px;
+    font-size: 16px; font-style: italic; color: var(--blanco);
+  }
+  .frase .origen { display: block; font-size: 11px; color: var(--gris-medio); font-style: normal; margin-top: 12px; letter-spacing: 1px; }
+
+  /* LINK CARDS */
+  .link-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px; margin-top: 32px;
+  }
+  .link-card {
+    padding: 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; text-decoration: none; color: var(--blanco);
+    display: block; transition: all 0.2s;
+  }
+  .link-card:hover { border-color: var(--cobalto-claro); transform: translateY(-2px); }
+  .link-card .icon {
+    display: inline-block; width: 32px; height: 32px; line-height: 32px;
+    text-align: center; background: var(--cobalto); border-radius: 8px;
+    margin-bottom: 12px; font-weight: 700; font-size: 14px;
+  }
+  .link-card .title { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .link-card .desc { font-size: 13px; color: var(--gris-medio); }
+  .link-card .url { font-size: 12px; color: var(--cobalto-claro); font-family: monospace; word-break: break-all; margin-top: 8px; }
+
+  /* CONTEXTO */
+  .contexto-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;
+    margin-top: 32px;
+  }
+  @media (max-width: 768px) { .contexto-grid { grid-template-columns: 1fr; } }
+  .contexto-card {
+    padding: 24px; background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
+  }
+  .contexto-card h4 {
+    font-size: 14px; color: var(--cobalto-claro); margin-bottom: 12px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-row .stat-label { color: var(--gris-medio); }
+  .stat-row .stat-value { color: var(--blanco); font-weight: 600; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding: 24px 0 24px 32px; margin-top: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(180deg, var(--cobalto-claro) 0%, transparent 100%);
+  }
+  .timeline-item { position: relative; padding: 0 0 32px 24px; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -28px; top: 4px; width: 14px; height: 14px;
+    background: var(--cobalto-claro); border-radius: 50%; border: 3px solid var(--negro);
+  }
+  .timeline-year {
+    font-size: 12px; color: var(--cobalto-claro); font-weight: 700;
+    letter-spacing: 2px; margin-bottom: 4px;
+  }
+  .timeline-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .timeline-desc { font-size: 14px; color: var(--gris-medio); }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, var(--cobalto) 0%, var(--cobalto-oscuro) 100%);
+    padding: 60px 40px; border-radius: 24px; text-align: center; margin: 60px 0;
+  }
+  .cta h3 { font-size: 32px; font-weight: 800; margin-bottom: 16px; }
+  .cta p { font-size: 16px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.08);
+    color: var(--gris-medio); font-size: 13px; text-align: center;
+  }
+
+  /* SECTION BACKGROUNDS */
+  .bg-section { background: var(--carbón); }
+  .bg-dark { background: var(--negro); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Investigación de marca · Junio 2026</span>
+    <h1>COBALTO</h1>
+    <h2>Identidad de marca · Cachipay, Cundinamarca</h2>
+    <p style="font-size:18px; color: var(--gris-medio); max-width: 600px; margin: 0 auto;">
+      El gimnasio líder de un pueblo de 10.000 habitantes. 
+      Cinco años forjando sueños con disciplina, fuerza y arraigo local.
+    </p>
+    <div class="hero-pillars">
+      <span>💪 Musculación</span>
+      <span>🥗 Hábitos saludables</span>
+      <span>🏔 Tierra de ensueños</span>
+      <span>⭐ 4.1/5 mejor de Cachipay</span>
+    </div>
+  </div>
+  <div class="scroll-indicator">↓ descubre ↓</div>
+</section>
+
+<!-- FICHA TÉCNICA -->
+<section class="bg-section">
+  <div class="container">
+    <span class="section-title">01 · Ficha técnica</span>
+    <h2 class="section-h2">Lo que sabemos del negocio</h2>
+    <p class="section-lead">
+      Todo lo recopilado de sus redes, directorios, podcast local y reseñas. 
+      Datos verificados en múltiples fuentes.
+    </p>
+
+    <div class="ficha-grid">
+      <div class="ficha-item">
+        <div class="label">Nombre comercial</div>
+        <div class="value">Gym Cobalto</div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Tagline oficial</div>
+        <div class="value" style="font-style:italic;">"Gimnasio en Cachipay · Musculación & hábitos saludables"</div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Tipo de negocio</div>
+        <div class="value">Centro de musculación y acondicionamiento físico</div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Dirección</div>
+        <div class="value">Calle 3 #1-59 / #1-63<br/>Cachipay, Cundinamarca · CP 253020</div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Contacto</div>
+        <div class="value">
+          📞 +57 300 443 6649<br/>
+          <a href="https://wa.me/573004436649" target="_blank">Abrir WhatsApp →</a>
+        </div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Fundador</div>
+        <div class="value">
+          <strong>Edwin González</strong><br/>
+          <span style="color: var(--gris-medio); font-size: 14px;">@edwin.gonzalez.d · Entrenador deportivo</span>
+        </div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Antigüedad</div>
+        <div class="value">~5 años (fundado ~2020)</div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Precio desde</div>
+        <div class="value" style="color: var(--acento); font-weight: 700;">$8.000 COP / día</div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Rating público</div>
+        <div class="value" style="color: var(--acento);">⭐ 4.1 / 5 · 9 reseñas (fitfit.fitness)</div>
+      </div>
+      <div class="ficha-item">
+        <div class="label">Posición local</div>
+        <div class="value">🥇 #1 entre 4 gimnasios de Cachipay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ETIMOLOGÍA -->
+<section class="bg-dark">
+  <div class="container">
+    <span class="section-title">02 · Etimología</span>
+    <h2 class="section-h2">¿Por qué "Cobalto" es un nombre con peso</h2>
+    <p class="section-lead">
+      El nombre no es casual. Viene de un mineral con historia, mitología y un color icónico.
+    </p>
+
+    <div class="etymology">
+      <div class="etymology-grid">
+        <div>
+          <h3>📖 Historia del nombre</h3>
+          <p style="color: var(--gris-claro); margin-bottom: 16px;">
+            Del alemán <em>Kobalt</em>, alteración de <em>Kobold</em> — literalmente "duende" o "gnomo". 
+            Los mineros germanos medievales creían que un espíritu travieso robaba la plata de las minas 
+            y dejaba este mineral duro en su lugar.
+          </p>
+          <ul class="etymology-list">
+            <li><span class="bullet">⚒</span> <span><strong>Mineral:</strong> metal duro, brillante, resistente a la temperatura (Co, #27)</span></li>
+            <li><span class="bullet">🎨</span> <span><strong>Color icónico:</strong> azul cobalto — intenso, profundo, magnético</span></li>
+            <li><span class="bullet">🔬</span> <span><strong>Uso histórico:</strong> pigmentos azules en cerámica, vidrio y pintura</span></li>
+            <li><span class="bullet">💪</span> <span><strong>Asociación moderna:</strong> superaleaciones, imanes, vitamina B12</span></li>
+            <li><span class="bullet">✨</span> <span><strong>Connotación para la marca:</strong> fuerza, transformación, misterio, esencial</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="co-badge">
+            <div class="co-symbol">Co</div>
+            <div class="co-meta">COBALTO · 27</div>
+          </div>
+          <p style="text-align: center; color: var(--gris-medio); font-size: 13px; margin-top: 16px;">
+            Símbolo químico del cobalto
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PALETA -->
+<section class="bg-section">
+  <div class="container">
+    <span class="section-title">03 · Sistema visual</span>
+    <h2 class="section-h2">Paleta de color sugerida</h2>
+    <p class="section-lead">
+      Propuesta basada en la etimología del nombre. No pudimos verificar el logo actual 
+      (las imágenes de búsqueda eran genéricas), pero estos colores encajan perfectamente 
+      con la identidad verbal y el ADN de la marca.
+    </p>
+
+    <div class="palette-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #0047AB;"></div>
+        <div class="color-info">
+          <div class="name">Cobalto Primario</div>
+          <div class="hex">#0047AB</div>
+          <div class="role">Color firma · logo, CTAs, links</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #0A2A6B;"></div>
+        <div class="color-info">
+          <div class="name">Cobalto Profundo</div>
+          <div class="hex">#0A2A6B</div>
+          <div class="role">Fondo dark · hero, secciones premium</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #0F0F0F;"></div>
+        <div class="color-info">
+          <div class="name">Negro Carbón</div>
+          <div class="hex">#0F0F0F</div>
+          <div class="role">Background principal · fuerza</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #FFC107;"></div>
+        <div class="color-info">
+          <div class="name">Energía / Acento</div>
+          <div class="hex">#FFC107</div>
+          <div class="role">CTAs secundarios · energía, motivación</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #F9FAFB;"></div>
+        <div class="color-info">
+          <div class="name">Blanco Humo</div>
+          <div class="hex">#F9FAFB</div>
+          <div class="role">Texto principal · claridad</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LENGUAJE -->
+<section class="bg-dark">
+  <div class="container">
+    <span class="section-title">04 · Identidad verbal</span>
+    <h2 class="section-h2">Cómo habla Cobalto</h2>
+    <p class="section-lead">
+      El tono es motivacional, cercano, disciplinado, popular. Sin pretensiones de lujo, 
+      con orgullo local.
+    </p>
+
+    <h3 style="margin-top: 40px; margin-bottom: 16px; font-size: 18px; color: var(--cobalto-claro);">HASHTAGS OFICIALES</h3>
+    <div class="hashtags">
+      <span class="hashtag">#Gymcobalto</span>
+      <span class="hashtag">#disciplina</span>
+      <span class="hashtag">#Gym</span>
+      <span class="hashtag">#cachipay</span>
+      <span class="hashtag">#5AñosDeFuerza</span>
+      <span class="hashtag">#DeterminaciónSinLímite</span>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 16px; font-size: 18px; color: var(--cobalto-claro);">FRASES QUE USAN</h3>
+    <div class="frases-grid">
+      <div class="frase">
+        "Mejoramos por ustedes y para ustedes"
+        <span class="origen">— Post de nuevos horarios y tarifas</span>
+      </div>
+      <div class="frase">
+        "Gym Cobalto, tu mejor opción"
+        <span class="origen">— Facebook oficial</span>
+      </div>
+      <div class="frase">
+        "Gym Cobalto busca enaltecer a sus afiliados"
+        <span class="origen">— Bio / descripción</span>
+      </div>
+      <div class="frase">
+        "No necesitas un gimnasio para moverte. Con ejercicios funcionales y enfoque tipo militar"
+        <span class="origen">— Post de Instagram</span>
+      </div>
+      <div class="frase">
+        "Fue creado hace cinco años por Edwin, un joven emprendedor y amante al deporte, quien empezó con pequeño espacio para motivarse..."
+        <span class="origen">— Podcast Creadores de Sueños ep. 6</span>
+      </div>
+      <div class="frase">
+        "A entrenar a Cobalto. Aquí, cada [máquina] cuenta."
+        <span class="origen">— Cierre típico de su contenido</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FODA -->
+<section class="bg-section">
+  <div class="container">
+    <span class="section-title">05 · Análisis estratégico</span>
+    <h2 class="section-h2">FODA de la marca</h2>
+    <p class="section-lead">
+      Lo que tienen a favor, lo que falta, lo que pueden aprovechar, lo que los amenaza.
+    </p>
+
+    <div class="foda">
+      <div class="foda-card fortalezas">
+        <h4>💪 Fortalezas</h4>
+        <ul>
+          <li>· Mejor gym rankeado de Cachipay (4.1★)</li>
+          <li>· Historia de origen poderosa (5 años, empezó pequeño)</li>
+          <li>· Precio accesible ($8.000/día = barrera baja)</li>
+          <li>· Dueño carismático y visible (Edwin)</li>
+          <li>· Conexión cultural con "Creadores de Sueños"</li>
+          <li>· 98 likes en FB en pueblo de 10K habitantes = alta penetración</li>
+          <li>· Discurso claro: disciplina, hábitos, enaltecimiento</li>
+        </ul>
+      </div>
+      <div class="foda-card debilidades">
+        <h4>⚠️ Brechas</h4>
+        <ul>
+          <li>· Sin website propio</li>
+          <li>· Sin TikTok ni YouTube oficial</li>
+          <li>· Sin app de reservas / gestión</li>
+          <li>· Pocas reseñas en Google Maps</li>
+          <li>· Sin merchandising ni productos</li>
+          <li>· Contenido orgánico de bajo volumen</li>
+          <li>· Sin programa de referidos digital</li>
+        </ul>
+      </div>
+      <div class="foda-card oportunidades">
+        <h4>🚀 Oportunidades</h4>
+        <ul>
+          <li>· Crear línea visual "Cobalto Blue"</li>
+          <li>· Lanzar "Cobalto Wear" (merch)</li>
+          <li>· Serie "5 Años de Fuerza" (storytelling)</li>
+          <li>· "Cobalto Challenge 30 días"</li>
+          <li>· Alianzas con emprendedores locales</li>
+          <li>· Planes corporativos (floricultura, fincas)</li>
+          <li>· "Cobalto Kids" / "Cobalto Teens"</li>
+          <li>· Eventos outdoor en paisajes de Cachipay</li>
+        </ul>
+      </div>
+      <div class="foda-card amenazas">
+        <h4>🌩 Amenazas</h4>
+        <ul>
+          <li>· 3 competidores más en el pueblo</li>
+          <li>· Tendencia a migrar a municipios con más oferta (La Mesa, Facatativá)</li>
+          <li>· Saturación de contenido fitness en redes</li>
+          <li>· Decaimiento del emprendimiento rural</li>
+          <li>· Cambios en tendencias (crossfit, funcional, etc.)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="bg-dark">
+  <div class="container">
+    <span class="section-title">06 · Historia de la marca</span>
+    <h2 class="section-h2">Línea de tiempo detectada</h2>
+    <p class="section-lead">
+      Lo que pudimos reconstruir de su trayectoria a partir de su contenido y menciones externas.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">~2020</div>
+        <div class="timeline-title">El inicio: un pequeño espacio</div>
+        <div class="timeline-desc">Edwin González, joven emprendedor y amante al deporte, decide crear un espacio para entrenar y motivar. Empieza con equipamiento mínimo en un local pequeño de Cachipay.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020 - 2023</div>
+        <div class="timeline-title">Crecimiento orgánico en el pueblo</div>
+        <div class="timeline-desc">Va sumando afiliados del pueblo y zonas cercanas (La Mesa, Anapoima). Se posiciona como el gym de referencia local por la cercanía y la accesibilidad.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-title">Salto digital: aparece en podcast y directorios</div>
+        <div class="timeline-desc">Es destacado por el podcast "Creadores de Sueños" de Angie Solano (@soyangiesol, Señorita Cachipay 2024-2025) en su episodio #6. Empieza a aparecer en fitfit.fitness y directorios locales.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-title">Consolidación y mejoras</div>
+        <div class="timeline-desc">Lanza nuevos horarios y tarifas ("Mejoramos por ustedes y para ustedes"). Refuerza su presencia en Instagram y Facebook. Es etiquetado por @cachipayturistica.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025 - 2026</div>
+        <div class="timeline-title">5 años de fuerza</div>
+        <div class="timeline-desc">Celebran el 5° aniversario con hashtags #5AñosDeFuerza #DeterminaciónSinLímite. Mantienen la esencia emprendedora mientras crecen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXTO -->
+<section class="bg-section">
+  <div class="container">
+    <span class="section-title">07 · Contexto local</span>
+    <h2 class="section-h2">Cachipay, Cundinamarca</h2>
+    <p class="section-lead">
+      El pueblo donde opera Gym Cobalto es clave para entender su marca. 
+      No es una ciudad, es una tierra de ensueños.
+    </p>
+
+    <div class="contexto-grid">
+      <div class="contexto-card">
+        <h4>📍 Datos del municipio</h4>
+        <div class="stat-row"><span class="stat-label">Población</span><span class="stat-value">~10.000 hab.</span></div>
+        <div class="stat-row"><span class="stat-label">Distancia a Bogotá</span><span class="stat-value">58 km</span></div>
+        <div class="stat-row"><span class="stat-label">Extensión</span><span class="stat-value">56 km²</span></div>
+        <div class="stat-row"><span class="stat-label">Altura</span><span class="stat-value">1.600 msnm</span></div>
+        <div class="stat-row"><span class="stat-label">Temperatura</span><span class="stat-value">22°C promedio</span></div>
+        <div class="stat-row"><span class="stat-label">Provincia</span><span class="stat-value">Tequendama</span></div>
+        <div class="stat-row"><span class="stat-label">Código postal</span><span class="stat-value">253020</span></div>
+        <div class="stat-row"><span class="stat-label">Gimnasios en el pueblo</span><span class="stat-value">4 (Cobalto #1)</span></div>
+      </div>
+      <div class="contexto-card">
+        <h4>🌱 Economía y cultura</h4>
+        <div class="stat-row"><span class="stat-label">Economía principal</span><span class="stat-value">Floricultura (526 fincas)</span></div>
+        <div class="stat-row"><span class="stat-label">Otros productos</span><span class="stat-value">Café, maíz, frijol, frutas</span></div>
+        <div class="stat-row"><span class="stat-label">Lema del municipio</span><span class="stat-value" style="color: var(--acento);">"Tierra de Ensueños"</span></div>
+        <div class="stat-row"><span class="stat-label">Alcalde</span><span class="stat-value">Luis Orlando Garzón A.</span></div>
+        <div class="stat-row"><span class="stat-label">Plan desarrollo</span><span class="stat-value">"Desde el campo, más para todos"</span></div>
+        <div class="stat-row"><span class="stat-label">Atracción turística</span><span class="stat-value">Cascada del Cachipay</span></div>
+        <div class="stat-row"><span class="stat-label">Conexión cultural</span><span class="stat-value" style="color: var(--cobalto-claro);">Podcast "Creadores de Sueños"</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px; padding: 24px; background: rgba(0,71,171,0.1); border: 1px solid rgba(0,71,171,0.3); border-radius: 12px;">
+      <h4 style="font-size: 14px; color: var(--cobalto-claro); margin-bottom: 8px;">💡 INSIGHT CLAVE</h4>
+      <p style="font-size: 16px; line-height: 1.6;">
+        Cachipay se promociona como <strong>"Tierra de Ensueños"</strong>. 
+        El podcast local que visibiliza a Gym Cobalto se llama <strong>"Creadores de Sueños"</strong>. 
+        Esta conexión entre la marca del pueblo y la marca del gym es un activo cultural 
+        <strong>muy poderoso</strong> que debería explotarse más en la comunicación de Cobalto.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="bg-dark">
+  <div class="container">
+    <span class="section-title">08 · Gente detrás</span>
+    <h2 class="section-h2">Los rostros de la marca</h2>
+    <p class="section-lead">
+      Tres figuras clave en el ecosistema de Gym Cobalto.
+    </p>
+
+    <div class="contexto-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="contexto-card">
+        <h4>👤 Edwin González</h4>
+        <p style="color: var(--cobalto-claro); font-size: 13px; margin-bottom: 12px;">Fundador · Entrenador</p>
+        <p style="font-size: 14px;">"Joven emprendedor y amante al deporte, quien empezó con pequeño espacio para motivarse..." (Podcast). Su historia personal es el corazón de la marca.</p>
+        <p style="margin-top: 12px; font-size: 12px;"><a href="https://www.instagram.com/edwin.gonzalez.d/" target="_blank" style="color: var(--cobalto-claro);">@edwin.gonzalez.d →</a></p>
+      </div>
+      <div class="contexto-card">
+        <h4>👤 Angie Solano</h4>
+        <p style="color: var(--cobalto-claro); font-size: 13px; margin-bottom: 12px;">Aliada mediática · Creadora de "Creadores de Sueños"</p>
+        <p style="font-size: 14px;">Bailarina de folclor colombiano, Señorita Cachipay 2024-2025. Su podcast visibilizó a Cobalto en el episodio #6. Aliada clave de comunicación.</p>
+        <p style="margin-top: 12px; font-size: 12px;"><a href="https://www.instagram.com/soyangiesol/" target="_blank" style="color: var(--cobalto-claro);">@soyangiesol →</a></p>
+      </div>
+      <div class="contexto-card">
+        <h4>👤 @cachipayturistica</h4>
+        <p style="color: var(--cobalto-claro); font-size: 13px; margin-bottom: 12px;">Cuenta aliada de turismo local</p>
+        <p style="font-size: 14px;">Perfil que etiqueta y visibiliza emprendimientos del municipio. Cobalto aparece frecuentemente en sus posts. Soporte institucional informal.</p>
+        <p style="margin-top: 12px; font-size: 12px;"><a href="https://www.instagram.com/cachipayturistica/" target="_blank" style="color: var(--cobalto-claro);">@cachipayturistica →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + RECOMENDACIONES -->
+<section class="bg-section">
+  <div class="container">
+    <span class="section-title">09 · Recomendaciones</span>
+    <h2 class="section-h2">Por dónde arrancar</h2>
+
+    <div class="contexto-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="contexto-card" style="border-top: 3px solid var(--cobalto-claro);">
+        <h4>🎨 Si vas a rediseñar la marca</h4>
+        <ul style="list-style: none; font-size: 14px; margin-top: 12px;">
+          <li style="padding: 6px 0;">→ Mantén los colores o adopta azul cobalto + negro + amarillo</li>
+          <li style="padding: 6px 0;">→ Tagline: "Disciplina que transforma" o "Donde los sueños se entrenan"</li>
+          <li style="padding: 6px 0;">→ Logo más escalable y minimalista</li>
+          <li style="padding: 6px 0;">→ Templates de Instagram listos para usar</li>
+          <li style="padding: 6px 0;">→ Edwin como rostro de la marca</li>
+        </ul>
+      </div>
+      <div class="contexto-card" style="border-top: 3px solid var(--acento);">
+        <h4>📣 Si vas a hacerles marketing</h4>
+        <ul style="list-style: none; font-size: 14px; margin-top: 12px;">
+          <li style="padding: 6px 0;">→ Plan de 100 reseñas en Google Maps en 3 meses</li>
+          <li style="padding: 6px 0;">→ Lanzar TikTok oficial (tips + transformaciones)</li>
+          <li style="padding: 6px 0;">→ "Cobalto Challenge 30 días" comunitario</li>
+          <li style="padding: 6px 0;">→ Reactivar "Creadores de Sueños" con seguimiento anual</li>
+          <li style="padding: 6px 0;">→ Email marketing básico para clientes</li>
+        </ul>
+      </div>
+      <div class="contexto-card" style="border-top: 3px solid var(--verde);">
+        <h4>💻 Si vas a hacerles web</h4>
+        <ul style="list-style: none; font-size: 14px; margin-top: 12px;">
+          <li style="padding: 6px 0;">→ One-page: horarios, precios, ubicación, contacto</li>
+          <li style="padding: 6px 0;">→ Google Maps embebido</li>
+          <li style="padding: 6px 0;">→ Botón WhatsApp flotante</li>
+          <li style="padding: 6px 0;">→ Linktree en bio de Instagram</li>
+          <li style="padding: 6px 0;">→ Landing de "Plan Día de Prueba Gratis"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h3>🚀 Próximo paso sugerido</h3>
+      <p>
+        Empezar por una sesión de descubrimiento con Edwin para validar esta información, 
+        confirmar el tagline, la paleta y definir las prioridades de branding según su presupuesto. 
+        Con esta base ya se puede arrancar a producir assets.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section class="bg-dark">
+  <div class="container">
+    <span class="section-title">10 · Recursos y fuentes</span>
+    <h2 class="section-h2">Todos los links</h2>
+    <p class="section-lead">Para que el equipo de branding tenga todo a mano.</p>
+
+    <h3 style="margin-top: 32px; font-size: 16px; color: var(--cobalto-claro);">REDES OFICIALES</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://www.instagram.com/gymcobalto/" target="_blank">
+        <div class="icon">IG</div>
+        <div class="title">@gymcobalto</div>
+        <div class="desc">Instagram oficial del gimnasio</div>
+        <div class="url">instagram.com/gymcobalto</div>
+      </a>
+      <a class="link-card" href="https://www.facebook.com/p/Gym-Cobalto-61566247414088/" target="_blank">
+        <div class="icon">FB</div>
+        <div class="title">Gym Cobalto</div>
+        <div class="desc">Página oficial en Facebook</div>
+        <div class="url">facebook.com/p/Gym-Cobalto-61566247414088</div>
+      </a>
+      <a class="link-card" href="https://wa.me/573004436649" target="_blank">
+        <div class="icon">WA</div>
+        <div class="title">WhatsApp directo</div>
+        <div class="desc">+57 300 443 6649</div>
+        <div class="url">wa.me/573004436649</div>
+      </a>
+    </div>
+
+    <h3 style="margin-top: 40px; font-size: 16px; color: var(--cobalto-claro);">APARICIÓN EN MEDIOS LOCALES</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://www.instagram.com/reel/DOZraPMDJHQ/" target="_blank">
+        <div class="icon">▶</div>
+        <div class="title">Creadores de Sueños ep. 6</div>
+        <div class="desc">Reel del podcast local de @soyangiesol</div>
+        <div class="url">instagram.com/reel/DOZraPMDJHQ</div>
+      </a>
+      <a class="link-card" href="https://www.instagram.com/p/DGY5WvOynyx/" target="_blank">
+        <div class="icon">IG</div>
+        <div class="title">Post: nuevos horarios</div>
+        <div class="desc">"Mejoramos por ustedes y para ustedes"</div>
+        <div class="url">instagram.com/p/DGY5WvOynyx</div>
+      </a>
+      <a class="link-card" href="https://www.instagram.com/p/DBhdtyEsMRi/" target="_blank">
+        <div class="icon">IG</div>
+        <div class="title">Post: enaltecer afiliados</div>
+        <div class="desc">Manifiesto de marca</div>
+        <div class="url">instagram.com/p/DBhdtyEsMRi</div>
+      </a>
+    </div>
+
+    <h3 style="margin-top: 40px; font-size: 16px; color: var(--cobalto-claro);">DIRECTORIOS Y RESEÑAS</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://co.fitfit.fitness/es/z/802544-cachipay/" target="_blank">
+        <div class="icon">📋</div>
+        <div class="title">Fitfit Cachipay</div>
+        <div class="desc">Directorio de gimnasios del pueblo</div>
+        <div class="url">co.fitfit.fitness/es/z/802544-cachipay</div>
+      </a>
+      <a class="link-card" href="https://www.turismosinlimites.com.co/directorio-comercial-cachipay/" target="_blank">
+        <div class="icon">📋</div>
+        <div class="title">Directorio Comercial Cachipay</div>
+        <div class="desc">Listado de negocios locales</div>
+        <div class="url">turismosinlimites.com.co/directorio-comercial-cachipay</div>
+      </a>
+    </div>
+
+    <h3 style="margin-top: 40px; font-size: 16px; color: var(--cobalto-claro);">CONTEXTO DEL MUNICIPIO</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://es.wikipedia.org/wiki/Cachipay" target="_blank">
+        <div class="icon">📖</div>
+        <div class="title">Wikipedia: Cachipay</div>
+        <div class="desc">Historia y datos del municipio</div>
+        <div class="url">es.wikipedia.org/wiki/Cachipay</div>
+      </a>
+      <a class="link-card" href="https://www.cachipay-cundinamarca.gov.co/" target="_blank">
+        <div class="icon">🏛</div>
+        <div class="title">Alcaldía de Cachipay</div>
+        <div class="desc">Sitio oficial del municipio</div>
+        <div class="url">cachipay-cundinamarca.gov.co</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>🔵 <strong>Gym Cobalto · Identidad de Marca</strong></p>
+    <p style="margin-top: 8px; color: var(--gris-medio);">
+      Investigación generada por Mavis · Junio 2026 · Para uso interno del equipo de branding
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

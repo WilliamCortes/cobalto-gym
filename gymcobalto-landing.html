@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gym Cobalto · Cachipay · Disciplina que Transforma</title>
+<meta name="description" content="El gimnasio #1 de Cachipay. Musculación, funcional y cardio. Planes desde $8.000/día. Empieza hoy."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --cobalt:        #0047AB;
+  --cobalt-bright: #1A6BFF;
+  --cobalt-deep:   #002B6E;
+  --cobalt-glow:   rgba(0,71,171,.45);
+  --gold:          #FFC107;
+  --gold-dark:     #E6A800;
+  --ink:           #080C12;
+  --ink2:          #111620;
+  --ink3:          #1C2333;
+  --steel:         #2A3347;
+  --mist:          #8B95AA;
+  --fog:           #C8CDD8;
+  --white:         #F4F7FF;
+  --ff-display:    'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+  --ff-body:       'Inter', system-ui, sans-serif;
+  --radius:        12px;
+  --radius-lg:     20px;
+}
+
+/* ── RESET ──────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  font-family: var(--ff-body);
+  background: var(--ink);
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { display:block; max-width:100%; }
+a { text-decoration:none; color:inherit; }
+
+/* ── UTILITY ────────────────────────────────────────── */
+.container { max-width:1140px; margin:0 auto; padding:0 24px; }
+.section    { padding:100px 0; }
+.section--alt { background:var(--ink2); }
+.eyebrow {
+  font-family: var(--ff-body);
+  font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--cobalt-bright); font-weight:600; margin-bottom:14px;
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(36px,6vw,64px);
+  line-height:1; letter-spacing:1px;
+  color:var(--white); margin-bottom:20px;
+}
+.section-lead {
+  font-size:18px; color:var(--mist);
+  line-height:1.7; max-width:620px; margin-bottom:48px;
+}
+
+/* ── NAV ────────────────────────────────────────────── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:18px 0;
+  background: linear-gradient(180deg,rgba(8,12,18,.95) 0%,rgba(8,12,18,0) 100%);
+  backdrop-filter: blur(0px);
+  transition: all .3s ease;
+}
+nav.scrolled {
+  background: rgba(8,12,18,.96);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(255,255,255,.05);
+}
+.nav-inner {
+  display:flex; align-items:center; justify-content:space-between;
+  max-width:1140px; margin:0 auto; padding:0 24px;
+}
+.nav-logo {
+  display:flex; align-items:center; gap:12px;
+}
+.nav-logo-mark {
+  width:40px; height:40px;
+  background: linear-gradient(135deg,var(--cobalt) 0%,var(--cobalt-bright) 100%);
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--ff-display); font-size:22px; color:#fff;
+  box-shadow: 0 0 20px var(--cobalt-glow);
+}
+.nav-logo-text { font-family:var(--ff-display); font-size:22px; letter-spacing:2px; }
+.nav-logo-text span { color:var(--cobalt-bright); }
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-links a {
+  font-size:13px; font-weight:500; letter-spacing:.5px;
+  color:var(--fog); transition:color .2s;
+}
+.nav-links a:hover { color:var(--white); }
+.nav-cta {
+  background: var(--cobalt); color:#fff !important;
+  padding:10px 22px; border-radius:8px;
+  font-size:13px !important; font-weight:600 !important;
+  transition: background .2s, box-shadow .2s !important;
+}
+.nav-cta:hover { background:var(--cobalt-bright) !important; box-shadow:0 0 20px var(--cobalt-glow); }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+.hamburger span { display:block; width:24px; height:2px; background:var(--white); border-radius:2px; }
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero {
+  min-height:100vh;
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  background: var(--ink);
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80&auto=format&fit=crop');
+  background-size:cover; background-position:center 30%;
+  filter:brightness(.25) saturate(.6);
+}
+.hero-overlay {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 10% 50%, rgba(0,71,171,.5) 0%, transparent 60%),
+    linear-gradient(180deg, transparent 40%, var(--ink) 100%);
+}
+/* animated grid */
+.hero-grid {
+  position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,71,171,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,71,171,.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridFade 4s ease-in-out infinite alternate;
+}
+@keyframes gridFade { from{opacity:.4} to{opacity:1} }
+
+/* floating element symbol */
+.hero-element {
+  position:absolute; right:6%; top:50%; transform:translateY(-50%);
+  width:220px; height:220px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background: radial-gradient(circle, rgba(0,71,171,.3) 0%, transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100%{transform:translateY(-50%) scale(1); filter:brightness(1)}
+  50%{transform:translateY(-53%) scale(1.03); filter:brightness(1.2)}
+}
+.hero-co { font-family:var(--ff-display); font-size:110px; color:var(--cobalt-bright); line-height:1; opacity:.15; }
+.hero-co-label { font-size:11px; letter-spacing:4px; color:var(--cobalt-bright); opacity:.4; text-transform:uppercase; }
+
+.hero-content {
+  position:relative; z-index:2;
+  max-width:800px; padding:160px 24px 120px;
+  text-align:left;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:7px 16px; border:1px solid rgba(0,71,171,.5);
+  border-radius:999px; background:rgba(0,71,171,.15);
+  font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--cobalt-bright); margin-bottom:28px;
+  animation: fadeSlideUp .8s ease both;
+}
+.hero-badge::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--cobalt-bright);
+  animation: blink 1.4s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+.hero-h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(64px, 11vw, 140px);
+  line-height: .92; letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom:8px;
+  animation: fadeSlideUp .8s .15s ease both;
+}
+.hero-h1 .accent {
+  background: linear-gradient(90deg, var(--cobalt-bright) 0%, #80B3FF 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-sub {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 4.5vw, 52px);
+  line-height:1; letter-spacing:3px;
+  color:var(--mist); margin-bottom:32px;
+  animation: fadeSlideUp .8s .3s ease both;
+}
+.hero-desc {
+  font-size:18px; color:var(--fog); line-height:1.65;
+  max-width:520px; margin-bottom:44px;
+  animation: fadeSlideUp .8s .45s ease both;
+}
+.hero-actions {
+  display:flex; gap:16px; flex-wrap:wrap;
+  animation: fadeSlideUp .8s .6s ease both;
+}
+.btn-primary {
+  display:inline-flex; align-items:center; gap:10px;
+  background: var(--cobalt); color:#fff;
+  padding:16px 32px; border-radius:var(--radius);
+  font-weight:700; font-size:16px; letter-spacing:.3px;
+  border:none; cursor:pointer;
+  transition: all .25s ease;
+  box-shadow: 0 8px 32px rgba(0,71,171,.45);
+}
+.btn-primary:hover {
+  background:var(--cobalt-bright);
+  box-shadow: 0 12px 40px rgba(0,71,171,.7);
+  transform: translateY(-2px);
+}
+.btn-primary svg { transition:transform .2s; }
+.btn-primary:hover svg { transform:translateX(4px); }
+.btn-secondary {
+  display:inline-flex; align-items:center; gap:10px;
+  background:transparent; color:var(--white);
+  padding:16px 28px; border-radius:var(--radius);
+  font-weight:600; font-size:15px;
+  border:1px solid rgba(255,255,255,.2);
+  cursor:pointer; transition: all .25s;
+}
+.btn-secondary:hover {
+  border-color:rgba(255,255,255,.5);
+  background:rgba(255,255,255,.05);
+}
+.btn-wa {
+  background: #25D366; box-shadow: 0 8px 32px rgba(37,211,102,.3);
+}
+.btn-wa:hover { background:#1da851; box-shadow:0 12px 40px rgba(37,211,102,.5); }
+
+/* stats strip */
+.hero-stats {
+  position:absolute; bottom:0; left:0; right:0;
+  background:rgba(8,12,18,.85);
+  backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:24px 0; z-index:2;
+}
+.hero-stats-inner {
+  display:flex; align-items:center; justify-content:space-around;
+  max-width:1140px; margin:0 auto; padding:0 24px;
+  flex-wrap:wrap; gap:20px;
+}
+.stat { text-align:center; }
+.stat-num {
+  font-family:var(--ff-display);
+  font-size:clamp(32px,4vw,48px);
+  color:var(--white); line-height:1;
+}
+.stat-num span { color:var(--cobalt-bright); }
+.stat-label {
+  font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--mist); margin-top:4px;
+}
+.stat-divider {
+  width:1px; height:48px; background:rgba(255,255,255,.1);
+}
+
+@keyframes fadeSlideUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── SOCIAL PROOF TICKER ─────────────────────────────── */
+.ticker {
+  background:var(--cobalt-deep);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:14px 0; overflow:hidden;
+}
+.ticker-track {
+  display:flex; gap:64px;
+  animation: ticker 22s linear infinite;
+  width:max-content;
+}
+@keyframes ticker {
+  from{transform:translateX(0)} to{transform:translateX(-50%)}
+}
+.ticker-item {
+  display:flex; align-items:center; gap:12px;
+  font-size:13px; font-weight:600; letter-spacing:1px;
+  white-space:nowrap; color:rgba(255,255,255,.7);
+}
+.ticker-dot { width:6px; height:6px; border-radius:50%; background:var(--cobalt-bright); }
+
+/* ── SERVICES ────────────────────────────────────────── */
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:2px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+}
+.service-card {
+  background:var(--ink); padding:40px 32px;
+  position:relative; overflow:hidden;
+  transition: background .25s;
+  cursor:default;
+}
+.service-card:hover { background:var(--ink3); }
+.service-card:hover .service-glow { opacity:1; }
+.service-glow {
+  position:absolute; top:0; left:0; right:0;
+  height:2px;
+  background:linear-gradient(90deg, var(--cobalt) 0%, var(--cobalt-bright) 100%);
+  opacity:0; transition:opacity .25s;
+}
+.service-icon {
+  font-size:32px; margin-bottom:20px;
+}
+.service-name {
+  font-family:var(--ff-display);
+  font-size:28px; letter-spacing:1px; margin-bottom:12px;
+}
+.service-desc { font-size:14px; color:var(--mist); line-height:1.65; }
+.service-tag {
+  display:inline-block; margin-top:16px;
+  padding:5px 12px; border-radius:999px;
+  font-size:11px; font-weight:600; letter-spacing:1px;
+  background:rgba(0,71,171,.2); color:var(--cobalt-bright);
+  text-transform:uppercase;
+}
+
+/* ── PRICING ─────────────────────────────────────────── */
+.pricing-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+  gap:20px;
+}
+.plan-card {
+  border-radius:var(--radius-lg);
+  padding:40px 32px;
+  background:var(--ink3);
+  border:1px solid rgba(255,255,255,.07);
+  position:relative;
+  transition:transform .25s, box-shadow .25s;
+}
+.plan-card:hover { transform:translateY(-6px); }
+.plan-card.featured {
+  background:linear-gradient(160deg, var(--cobalt-deep) 0%, var(--ink3) 100%);
+  border-color:var(--cobalt);
+  box-shadow:0 0 60px rgba(0,71,171,.3);
+}
+.plan-card.featured:hover {
+  box-shadow:0 20px 80px rgba(0,71,171,.45);
+}
+.plan-badge {
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:var(--cobalt-bright); color:#fff;
+  padding:5px 18px; border-radius:999px;
+  font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  white-space:nowrap;
+}
+.plan-name {
+  font-family:var(--ff-display);
+  font-size:14px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--mist); margin-bottom:16px;
+}
+.plan-price {
+  font-family:var(--ff-display);
+  font-size:clamp(48px,6vw,64px);
+  line-height:1; color:var(--white);
+  margin-bottom:6px;
+}
+.plan-price sup { font-size:22px; color:var(--mist); }
+.plan-period { font-size:13px; color:var(--mist); margin-bottom:32px; }
+.plan-divider {
+  height:1px; background:rgba(255,255,255,.08);
+  margin-bottom:28px;
+}
+.plan-features { list-style:none; margin-bottom:36px; }
+.plan-features li {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:14px; color:var(--fog);
+  padding:8px 0; border-bottom:1px solid rgba(255,255,255,.05);
+}
+.plan-features li:last-child { border-bottom:none; }
+.plan-features .check {
+  color:var(--cobalt-bright); flex-shrink:0; margin-top:1px;
+}
+.plan-features .x { color:var(--steel); flex-shrink:0; margin-top:1px; }
+.plan-cta {
+  display:block; text-align:center;
+  padding:15px; border-radius:var(--radius);
+  font-weight:700; font-size:15px; letter-spacing:.5px;
+  transition: all .25s; cursor:pointer; border:none;
+}
+.plan-cta.primary {
+  background:var(--cobalt); color:#fff;
+  box-shadow:0 6px 24px rgba(0,71,171,.4);
+}
+.plan-cta.primary:hover {
+  background:var(--cobalt-bright);
+  box-shadow:0 12px 40px rgba(0,71,171,.6);
+}
+.plan-cta.outline {
+  background:transparent; color:var(--white);
+  border:1px solid rgba(255,255,255,.2);
+}
+.plan-cta.outline:hover { border-color:var(--cobalt-bright); color:var(--cobalt-bright); }
+
+/* ── WHY ─────────────────────────────────────────────── */
+.why-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px; align-items:center;
+}
+.why-visual {
+  position:relative;
+}
+.why-img-main {
+  width:100%; border-radius:var(--radius-lg);
+  aspect-ratio:4/5; object-fit:cover;
+  background:var(--ink3);
+  overflow:hidden;
+}
+.why-img-overlay {
+  position:absolute; bottom:-24px; right:-24px;
+  width:60%; border-radius:var(--radius);
+  aspect-ratio:4/3; object-fit:cover;
+  background:var(--cobalt-deep);
+  overflow:hidden;
+  border:3px solid var(--ink);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.why-accent-dot {
+  position:absolute; top:-24px; left:-24px;
+  width:80px; height:80px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--cobalt-bright) 0%,transparent 70%);
+  opacity:.5;
+}
+.why-points { list-style:none; margin-top:32px; }
+.why-points li {
+  display:flex; gap:16px; padding:20px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.why-points li:last-child { border-bottom:none; }
+.why-icon {
+  width:44px; height:44px; flex-shrink:0;
+  background:rgba(0,71,171,.15); border:1px solid rgba(0,71,171,.3);
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px;
+}
+.why-point-title { font-weight:700; font-size:16px; margin-bottom:6px; }
+.why-point-desc { font-size:14px; color:var(--mist); line-height:1.6; }
+
+/* ── SCHEDULE ────────────────────────────────────────── */
+.schedule-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+}
+.schedule-day {
+  background:var(--ink3); border-radius:var(--radius);
+  padding:28px 24px;
+  border:1px solid rgba(255,255,255,.06);
+  transition:border-color .2s, transform .2s;
+}
+.schedule-day:hover { border-color:var(--cobalt); transform:translateY(-3px); }
+.schedule-day.today { border-color:var(--cobalt-bright); background:rgba(0,71,171,.12); }
+.day-label {
+  font-family:var(--ff-display);
+  font-size:16px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--mist); margin-bottom:10px;
+}
+.schedule-day.today .day-label { color:var(--cobalt-bright); }
+.day-hours {
+  font-family:var(--ff-display);
+  font-size:26px; letter-spacing:1px; color:var(--white);
+  line-height:1.2;
+}
+.day-tag {
+  display:inline-block; margin-top:10px;
+  font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--cobalt-bright); font-weight:600;
+}
+.today-pill {
+  display:inline-block; margin-bottom:8px;
+  padding:3px 10px; border-radius:999px;
+  background:var(--cobalt-bright); color:#fff;
+  font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+}
+
+/* ── TESTIMONIALS ────────────────────────────────────── */
+.reviews-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+.review-card {
+  background:var(--ink3); border-radius:var(--radius-lg);
+  padding:32px; border:1px solid rgba(255,255,255,.06);
+  position:relative; overflow:hidden;
+  transition:transform .2s;
+}
+.review-card:hover { transform:translateY(-4px); }
+.review-card::before {
+  content:''; position:absolute; top:0; left:0;
+  width:100%; height:2px;
+  background:linear-gradient(90deg,var(--cobalt) 0%,transparent 100%);
+}
+.review-stars { color:var(--gold); font-size:16px; margin-bottom:16px; letter-spacing:2px; }
+.review-text {
+  font-size:15px; line-height:1.7; color:var(--fog);
+  font-style:italic; margin-bottom:20px;
+}
+.review-text::before { content:'"'; color:var(--cobalt-bright); font-size:32px; line-height:0; vertical-align:-14px; margin-right:2px; }
+.review-author { display:flex; align-items:center; gap:12px; }
+.review-avatar {
+  width:40px; height:40px; border-radius:50%;
+  background:linear-gradient(135deg,var(--cobalt) 0%,var(--cobalt-bright) 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--ff-display); font-size:18px; color:#fff; flex-shrink:0;
+}
+.review-name { font-weight:700; font-size:14px; }
+.review-meta { font-size:12px; color:var(--mist); }
+
+/* ── LOCATION ─────────────────────────────────────────── */
+.location-inner {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:60px; align-items:center;
+}
+.map-container {
+  border-radius:var(--radius-lg); overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+  aspect-ratio:4/3;
+}
+.map-container iframe { width:100%; height:100%; display:block; filter:invert(.9) hue-rotate(180deg) saturate(.7); }
+.location-details { list-style:none; }
+.location-details li {
+  display:flex; gap:14px; padding:18px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  font-size:15px; color:var(--fog);
+}
+.location-details li:last-child { border-bottom:none; }
+.loc-icon { color:var(--cobalt-bright); font-size:18px; flex-shrink:0; width:24px; }
+.loc-label { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--mist); font-weight:600; }
+.loc-val { color:var(--white); font-weight:500; }
+
+/* ── ABOUT / FOUNDING STORY ──────────────────────────── */
+.story-inner {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:80px; align-items:center;
+}
+.story-text .quote {
+  font-family:var(--ff-display);
+  font-size:clamp(22px,3vw,36px);
+  line-height:1.2; color:var(--cobalt-bright);
+  margin-bottom:32px; position:relative;
+}
+.story-text .quote::before {
+  content:''; display:block;
+  width:40px; height:3px;
+  background:var(--cobalt); margin-bottom:16px;
+}
+.story-body { font-size:16px; color:var(--mist); line-height:1.75; margin-bottom:24px; }
+.story-milestones {
+  display:flex; gap:32px; margin-top:36px;
+}
+.milestone {
+  text-align:center; flex:1;
+  padding:20px; border-radius:var(--radius);
+  background:rgba(0,71,171,.1); border:1px solid rgba(0,71,171,.2);
+}
+.milestone-num {
+  font-family:var(--ff-display); font-size:40px; color:var(--cobalt-bright); line-height:1;
+}
+.milestone-label { font-size:11px; color:var(--mist); letter-spacing:1px; text-transform:uppercase; margin-top:6px; }
+.story-visual {
+  position:relative;
+}
+.story-img {
+  width:100%; border-radius:var(--radius-lg);
+  aspect-ratio:3/4; object-fit:cover;
+  background:linear-gradient(160deg,var(--cobalt-deep) 0%,var(--ink3) 100%);
+  overflow:hidden;
+}
+.story-badge {
+  position:absolute; bottom:28px; left:-20px;
+  background:var(--ink2); border:1px solid rgba(0,71,171,.4);
+  border-radius:var(--radius); padding:16px 20px;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+}
+.story-badge-title { font-family:var(--ff-display); font-size:22px; color:var(--cobalt-bright); }
+.story-badge-sub { font-size:12px; color:var(--mist); margin-top:2px; }
+
+/* ── CTA FINAL ────────────────────────────────────────── */
+.cta-section {
+  padding:120px 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(0,71,171,.35) 0%, transparent 60%),
+    var(--ink);
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+.cta-title {
+  font-family:var(--ff-display);
+  font-size:clamp(48px,8vw,96px);
+  line-height:.95; letter-spacing:2px; margin-bottom:24px;
+}
+.cta-title .line2 { color:var(--cobalt-bright); }
+.cta-sub { font-size:18px; color:var(--mist); margin-bottom:48px; }
+.cta-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* ── FOOTER ───────────────────────────────────────────── */
+footer {
+  background:var(--ink2);
+  border-top:1px solid rgba(255,255,255,.05);
+  padding:60px 0 32px;
+}
+.footer-grid {
+  display:grid; grid-template-columns:2fr 1fr 1fr;
+  gap:60px; margin-bottom:60px;
+}
+.footer-brand { max-width:320px; }
+.footer-logo {
+  display:flex; align-items:center; gap:12px; margin-bottom:16px;
+}
+.footer-logo-mark {
+  width:36px; height:36px;
+  background:var(--cobalt); border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--ff-display); font-size:18px; color:#fff;
+}
+.footer-logo-name { font-family:var(--ff-display); font-size:20px; letter-spacing:2px; }
+.footer-desc { font-size:14px; color:var(--mist); line-height:1.7; margin-bottom:20px; }
+.footer-social { display:flex; gap:12px; }
+.social-btn {
+  width:36px; height:36px; border-radius:8px;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; color:var(--mist); cursor:pointer;
+  transition:all .2s;
+}
+.social-btn:hover { background:var(--cobalt); border-color:var(--cobalt); color:#fff; }
+.footer-col h4 {
+  font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--cobalt-bright); font-weight:600; margin-bottom:20px;
+}
+.footer-col ul { list-style:none; }
+.footer-col ul li {
+  padding:7px 0; font-size:14px; color:var(--mist);
+  transition:color .2s; cursor:pointer;
+}
+.footer-col ul li:hover { color:var(--white); }
+.footer-bottom {
+  border-top:1px solid rgba(255,255,255,.05); padding-top:28px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:12px;
+}
+.footer-bottom p { font-size:13px; color:var(--steel); }
+.footer-bottom span { color:var(--cobalt-bright); }
+
+/* ── WA FLOAT ─────────────────────────────────────────── */
+.wa-float {
+  position:fixed; bottom:28px; right:28px; z-index:200;
+  width:56px; height:56px; border-radius:50%;
+  background:#25D366;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 24px rgba(37,211,102,.5);
+  cursor:pointer;
+  animation: waFloat 3s ease-in-out infinite;
+  transition:transform .2s, box-shadow .2s;
+}
+.wa-float:hover { transform:scale(1.1); box-shadow:0 8px 32px rgba(37,211,102,.7); }
+@keyframes waFloat {
+  0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)}
+}
+.wa-float:hover { animation:none; }
+
+/* ── RATING BADGE ─────────────────────────────────────── */
+.rating-strip {
+  display:flex; align-items:center; justify-content:center;
+  gap:40px; flex-wrap:wrap;
+  padding:32px;
+  background:rgba(0,71,171,.08);
+  border-radius:var(--radius-lg);
+  border:1px solid rgba(0,71,171,.2);
+  margin-bottom:60px;
+}
+.rating-item { text-align:center; }
+.rating-stars { color:var(--gold); font-size:20px; letter-spacing:3px; }
+.rating-score { font-family:var(--ff-display); font-size:36px; color:var(--white); line-height:1; }
+.rating-label { font-size:12px; color:var(--mist); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+.rating-badge-text {
+  font-family:var(--ff-display);
+  font-size:22px; color:var(--cobalt-bright); text-transform:uppercase;
+}
+.rating-divider { width:1px; height:52px; background:rgba(255,255,255,.1); }
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media(max-width:900px){
+  .services-grid { grid-template-columns:1fr; }
+  .why-grid { grid-template-columns:1fr; gap:40px; }
+  .why-visual { order:-1; }
+  .story-inner { grid-template-columns:1fr; gap:40px; }
+  .location-inner { grid-template-columns:1fr; gap:40px; }
+  .footer-grid { grid-template-columns:1fr; gap:32px; }
+  .hero-element { display:none; }
+  .stat-divider { display:none; }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .story-milestones { gap:16px; }
+  .story-badge { left:12px; }
+}
+@media(max-width:600px){
+  .section { padding:64px 0; }
+  .hero-content { padding:120px 20px 100px; }
+  .hero-stats-inner { justify-content:center; gap:28px 40px; }
+  .pricing-grid { grid-template-columns:1fr; }
+  .cta-actions { flex-direction:column; align-items:center; }
+}
+
+/* image placeholders with Unsplash */
+.img-hero-bg {
+  background:
+    linear-gradient(rgba(0,60,140,.6),rgba(0,0,0,.8)),
+    url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80&auto=format')
+    center/cover no-repeat;
+}
+.img-why-main {
+  background:
+    url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80&auto=format')
+    center/cover no-repeat;
+}
+.img-why-overlay {
+  background:
+    url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format')
+    center/cover no-repeat;
+}
+.img-story {
+  background:
+    url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80&auto=format')
+    center/cover no-repeat;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">C</div>
+      <div class="nav-logo-text">GYM <span>COBALTO</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#planes">Planes</a>
+      <a href="#horarios">Horarios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="https://wa.me/573004436649?text=Hola!%20Quiero%20info%20de%20Gym%20Cobalto" target="_blank" class="nav-cta">¡Empieza hoy!</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-element" aria-hidden="true">
+    <div class="hero-co">Co</div>
+    <div class="hero-co-label">Elemento 27</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      🏆 &nbsp;#1 Gimnasio de Cachipay · 4.1 ⭐
+    </div>
+    <h1 class="hero-h1">
+      <span class="accent">FORJA</span><br>TU MEJOR<br>VERSIÓN
+    </h1>
+    <p class="hero-sub">DISCIPLINA QUE TRANSFORMA</p>
+    <p class="hero-desc">
+      El gimnasio líder de Cachipay. 5 años formando cuerpos y comunidad en el corazón de la Tierra de Ensueños. Musculación, funcional y cardio — para todos, desde <strong>$8.000/día</strong>.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/573004436649?text=Hola!%20Quiero%20comenzar%20en%20Gym%20Cobalto" target="_blank" class="btn-primary btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quiero empezar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#planes" class="btn-secondary">
+        Ver planes y precios
+      </a>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="hero-stats">
+    <div class="hero-stats-inner">
+      <div class="stat">
+        <div class="stat-num"><span>5</span>+</div>
+        <div class="stat-label">Años de trayectoria</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num"><span>4.1</span>⭐</div>
+        <div class="stat-label">Rating promedio</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num"><span>#1</span></div>
+        <div class="stat-label">Gym en Cachipay</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num"><span>$8k</span></div>
+        <div class="stat-label">Desde / día</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span> MUSCULACIÓN</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> ENTRENAMIENTO FUNCIONAL</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> CARDIO</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> HÁBITOS SALUDABLES</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> CACHIPAY, CUNDINAMARCA</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> #DISCIPLINA</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 5 AÑOS DE FUERZA</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> DETERMINACIÓN SIN LÍMITE</span>
+    <!-- duplicated for infinite loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span> MUSCULACIÓN</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> ENTRENAMIENTO FUNCIONAL</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> CARDIO</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> HÁBITOS SALUDABLES</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> CACHIPAY, CUNDINAMARCA</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> #DISCIPLINA</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 5 AÑOS DE FUERZA</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> DETERMINACIÓN SIN LÍMITE</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="eyebrow">Lo que ofrecemos</div>
+    <h2 class="section-title">TODO LO QUE<br>NECESITAS</h2>
+    <p class="section-lead">Tres disciplinas, un solo lugar. Equipos completos, ambiente real, entrenador disponible.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-glow"></div>
+        <div class="service-icon">🏋️</div>
+        <div class="service-name">MUSCULACIÓN</div>
+        <p class="service-desc">Zona completa de pesas libres: mancuernas, barras, máquinas de cables y poleas. El corazón del gym, diseñado para quienes buscan resultados reales en fuerza y volumen muscular.</p>
+        <span class="service-tag">Foco principal</span>
+      </div>
+      <div class="service-card">
+        <div class="service-glow"></div>
+        <div class="service-icon">⚡</div>
+        <div class="service-name">FUNCIONAL</div>
+        <p class="service-desc">Entrenamiento de alta intensidad con enfoque militar. Circuitos, trabajo con peso corporal y resistencia funcional. Para quienes quieren quemar grasa y ganar rendimiento al mismo tiempo.</p>
+        <span class="service-tag">Alta intensidad</span>
+      </div>
+      <div class="service-card">
+        <div class="service-glow"></div>
+        <div class="service-icon">🫀</div>
+        <div class="service-name">CARDIO</div>
+        <p class="service-desc">Zona cardiovascular con máquinas para mejorar resistencia, quemar calorías y fortalecer el corazón. El complemento perfecto para una rutina de musculación completa.</p>
+        <span class="service-tag">Resistencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section section--alt" id="nosotros">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-visual">
+        <div class="why-accent-dot"></div>
+        <div class="why-img-main img-why-main"></div>
+        <div class="why-img-overlay img-why-overlay"></div>
+      </div>
+      <div>
+        <div class="eyebrow">Por qué Cobalto</div>
+        <h2 class="section-title">EL GYM QUE<br>TE ENALTECE</h2>
+        <p class="section-lead">No somos el más grande — somos el que más te importa. El único gym de Cachipay donde el entrenador te conoce por nombre.</p>
+
+        <ul class="why-points">
+          <li>
+            <div class="why-icon">🥇</div>
+            <div>
+              <div class="why-point-title">El mejor calificado del pueblo</div>
+              <p class="why-point-desc">4.1 estrellas y el único gimnasio top-rated entre los 4 de Cachipay. Lo dicen nuestros propios afiliados, no nosotros.</p>
+            </div>
+          </li>
+          <li>
+            <div class="why-icon">📍</div>
+            <div>
+              <div class="why-point-title">Frente al parque principal</div>
+              <p class="why-point-desc">Calle 3 #1-59, en el corazón del pueblo. Sin excusas de distancia: el gym más accesible de Cachipay en precio y ubicación.</p>
+            </div>
+          </li>
+          <li>
+            <div class="why-icon">👤</div>
+            <div>
+              <div class="why-point-title">Edwin, tu entrenador de confianza</div>
+              <p class="why-point-desc">Fundador, entrenador deportivo y carachipayeño de corazón. Empezó desde cero hace 5 años porque creyó en su pueblo.</p>
+            </div>
+          </li>
+          <li>
+            <div class="why-icon">💰</div>
+            <div>
+              <div class="why-point-title">Accesible para todos, sin excusas</div>
+              <p class="why-point-desc">Planes desde $8.000/día. Porque la transformación no debería tener barrera de entrada. Mensualidades y paquetes para cada bolsillo.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="planes">
+  <div class="container">
+    <div class="eyebrow">Planes y precios</div>
+    <h2 class="section-title">EMPIEZA HOY<br>SIN EXCUSAS</h2>
+    <p class="section-lead">El plan que se adapta a tu ritmo. Sin contratos forzados, sin letra pequeña. Solo tú y tus metas.</p>
+
+    <div class="pricing-grid">
+      <div class="plan-card">
+        <div class="plan-name">Plan Día</div>
+        <div class="plan-price"><sup>$</sup>8.000</div>
+        <div class="plan-period">por sesión · entrada libre</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Acceso completo al gym</li>
+          <li><span class="check">✓</span> Todas las zonas (pesas, funcional, cardio)</li>
+          <li><span class="check">✓</span> Sin compromiso de permanencia</li>
+          <li><span class="x">—</span> Seguimiento personalizado</li>
+          <li><span class="x">—</span> Rutina diseñada a tu medida</li>
+        </ul>
+        <a href="https://wa.me/573004436649?text=Hola!%20Quiero%20el%20plan%20dia%20de%20Gym%20Cobalto" target="_blank" class="plan-cta outline">Escríbenos</a>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="plan-badge">MÁS POPULAR</div>
+        <div class="plan-name">Plan Mensual</div>
+        <div class="plan-price"><sup>$</sup>??</div>
+        <div class="plan-period">por mes · precio especial</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Acceso ilimitado todo el mes</li>
+          <li><span class="check">✓</span> Todas las zonas incluidas</li>
+          <li><span class="check">✓</span> Rutina de entrenamiento</li>
+          <li><span class="check">✓</span> Seguimiento con Edwin</li>
+          <li><span class="check">✓</span> Ahorro vs. plan día</li>
+        </ul>
+        <a href="https://wa.me/573004436649?text=Hola!%20Quiero%20info%20del%20plan%20mensual" target="_blank" class="plan-cta primary">Consultar precio</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">Plan Trimestral</div>
+        <div class="plan-price"><sup>$</sup>??</div>
+        <div class="plan-period">3 meses · mejor relación precio</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Acceso ilimitado por 3 meses</li>
+          <li><span class="check">✓</span> Rutina y seguimiento incluidos</li>
+          <li><span class="check">✓</span> Máximo ahorro garantizado</li>
+          <li><span class="check">✓</span> Consultoría de hábitos saludables</li>
+          <li><span class="check">✓</span> Prioridad en eventos Cobalto</li>
+        </ul>
+        <a href="https://wa.me/573004436649?text=Hola!%20Quiero%20info%20del%20plan%20trimestral" target="_blank" class="plan-cta outline">Consultar precio</a>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:40px; color:var(--mist); font-size:14px;">
+      💬 Los precios exactos de mensualidades y paquetes los damos directamente. Escríbenos y te respondemos en minutos.
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section section--alt" id="horarios">
+  <div class="container">
+    <div class="eyebrow">Horarios</div>
+    <h2 class="section-title">SIEMPRE<br>ABIERTOS</h2>
+    <p class="section-lead">De lunes a sábado, el gym te espera. Sin importar si prefieres madrugar o entrenar en la tarde.</p>
+
+    <div class="schedule-grid">
+      <div class="schedule-day today">
+        <div class="today-pill">HOY</div>
+        <div class="day-label">Lunes</div>
+        <div class="day-hours">5:00 AM<br>— 10:00 PM</div>
+        <div class="day-tag">Apertura completa</div>
+      </div>
+      <div class="schedule-day">
+        <div class="day-label">Martes</div>
+        <div class="day-hours">5:00 AM<br>— 10:00 PM</div>
+        <div class="day-tag">Apertura completa</div>
+      </div>
+      <div class="schedule-day">
+        <div class="day-label">Miércoles</div>
+        <div class="day-hours">5:00 AM<br>— 10:00 PM</div>
+        <div class="day-tag">Apertura completa</div>
+      </div>
+      <div class="schedule-day">
+        <div class="day-label">Jueves</div>
+        <div class="day-hours">5:00 AM<br>— 10:00 PM</div>
+        <div class="day-tag">Apertura completa</div>
+      </div>
+      <div class="schedule-day">
+        <div class="day-label">Viernes</div>
+        <div class="day-hours">5:00 AM<br>— 10:00 PM</div>
+        <div class="day-tag">Apertura completa</div>
+      </div>
+      <div class="schedule-day">
+        <div class="day-label">Sábado</div>
+        <div class="day-hours">7:00 AM<br>— 6:00 PM</div>
+        <div class="day-tag">Horario reducido</div>
+      </div>
+      <div class="schedule-day" style="opacity:.45;">
+        <div class="day-label">Domingo</div>
+        <div class="day-hours" style="color:var(--mist);">Cerrado</div>
+        <div class="day-tag" style="color:var(--steel);">Día de descanso</div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px; padding:20px 28px; border-radius:var(--radius); background:rgba(0,71,171,.1); border:1px solid rgba(0,71,171,.25); font-size:14px; color:var(--mist); max-width:600px;">
+      📣 <strong style="color:var(--white);">Horarios actualizados:</strong> Confirmamos siempre en nuestro Instagram <a href="https://instagram.com/gymcobalto" target="_blank" style="color:var(--cobalt-bright);">@gymcobalto</a> o escríbenos al WhatsApp para enterarte de cambios de temporada.
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+
+    <div class="rating-strip">
+      <div class="rating-item">
+        <div class="rating-stars">★★★★☆</div>
+        <div class="rating-score">4.1</div>
+        <div class="rating-label">Rating promedio</div>
+      </div>
+      <div class="rating-divider"></div>
+      <div class="rating-item">
+        <div class="rating-badge-text">#1 en Cachipay</div>
+        <div class="rating-label">Entre 4 gimnasios</div>
+      </div>
+      <div class="rating-divider"></div>
+      <div class="rating-item">
+        <div class="rating-score" style="color:var(--cobalt-bright)">9+</div>
+        <div class="rating-label">Reseñas verificadas</div>
+      </div>
+      <div class="rating-divider"></div>
+      <div class="rating-item">
+        <div class="rating-score">5+</div>
+        <div class="rating-label">Años de confianza</div>
+      </div>
+    </div>
+
+    <div class="eyebrow">Testimonios</div>
+    <h2 class="section-title">LO DICEN<br>NUESTROS AFILIADOS</h2>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">El mejor gym del pueblo, sin dudas. Edwin te ayuda a armar la rutina desde el primer día. Los equipos están en perfecto estado y el ambiente es muy chévere.</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">Carlos M.</div>
+            <div class="review-meta">Afiliado • Cachipay</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Llevo 8 meses yendo y los resultados hablan. El precio es super accesible y el entrenador siempre está pendiente. Gym Cobalto es parte de mi rutina diaria.</p>
+        <div class="review-author">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="review-name">Laura P.</div>
+            <div class="review-meta">Afiliada • La Mesa</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">Vine por el plan día y terminé haciendo mensualidad. La zona de musculación es completa, hay de todo para trabajar bien. Muy recomendado para los de Anapoima también.</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Juan S.</div>
+            <div class="review-meta">Afiliado • Anapoima</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://www.instagram.com/gymcobalto/" target="_blank" class="btn-secondary" style="display:inline-flex;">
+        Ver más en Instagram @gymcobalto
+        <svg width="14" height="14" style="margin-left:6px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDING STORY -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="story-inner">
+      <div class="story-text">
+        <div class="eyebrow">Nuestra historia</div>
+        <h2 class="section-title">NACIMOS<br>DE UN SUEÑO</h2>
+        <div class="quote">
+          "Mejoramos por ustedes<br>y para ustedes."
+        </div>
+        <p class="story-body">
+          Hace 5 años, Edwin González, un joven entrenador deportivo de Cachipay, empezó con un espacio pequeño y una idea grande: darle a su pueblo un lugar donde la transformación fuera posible para cualquiera, sin importar el presupuesto.
+        </p>
+        <p class="story-body">
+          Hoy, Gym Cobalto es el gimnasio mejor calificado de Cachipay y referente del emprendimiento local — elegido por el podcast "Creadores de Sueños" como uno de los negocios que construyen el futuro de la Tierra de Ensueños.
+        </p>
+        <p class="story-body">
+          Como el mineral que nos da nombre — duro, esencial, magnético — Cobalto está hecho para resistir y transformar.
+        </p>
+
+        <div class="story-milestones">
+          <div class="milestone">
+            <div class="milestone-num">5</div>
+            <div class="milestone-label">Años abiertos</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-num">#1</div>
+            <div class="milestone-label">Rating local</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-num">∞</div>
+            <div class="milestone-label">Comunidad</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-visual">
+        <div class="story-img img-story"></div>
+        <div class="story-badge">
+          <div class="story-badge-title">Co · 27</div>
+          <div class="story-badge-sub">Cobalto · Elemento de fuerza</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section" id="ubicacion">
+  <div class="container">
+    <div class="eyebrow">Dónde estamos</div>
+    <h2 class="section-title">EN EL CORAZÓN<br>DE CACHIPAY</h2>
+    <p class="section-lead">Frente al parque principal. El gym más céntrico y accesible del municipio.</p>
+
+    <div class="location-inner">
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.5!2d-74.5305!3d4.7284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNDMnNDIuMiJOIDc0wrAzMScyOS44Ilc!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Gym Cobalto ubicación en Cachipay">
+        </iframe>
+      </div>
+
+      <div>
+        <ul class="location-details">
+          <li>
+            <span class="loc-icon">📍</span>
+            <div>
+              <div class="loc-label">Dirección</div>
+              <div class="loc-val">Calle 3 #1-59 / #1-63, Cachipay<br>Cundinamarca, CP 253020</div>
+            </div>
+          </li>
+          <li>
+            <span class="loc-icon">📱</span>
+            <div>
+              <div class="loc-label">WhatsApp / Teléfono</div>
+              <div class="loc-val">
+                <a href="https://wa.me/573004436649" target="_blank" style="color:var(--cobalt-bright)">+57 300 443 6649</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="loc-icon">📸</span>
+            <div>
+              <div class="loc-label">Instagram</div>
+              <div class="loc-val">
+                <a href="https://instagram.com/gymcobalto" target="_blank" style="color:var(--cobalt-bright)">@gymcobalto</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="loc-icon">🗺️</span>
+            <div>
+              <div class="loc-label">Referencia</div>
+              <div class="loc-val">Frente al parque principal · Centro de Cachipay</div>
+            </div>
+          </li>
+          <li>
+            <span class="loc-icon">🚗</span>
+            <div>
+              <div class="loc-label">Desde Bogotá</div>
+              <div class="loc-val">58 km · aprox. 1h por la vía Bogotá–La Mesa</div>
+            </div>
+          </li>
+          <li>
+            <span class="loc-icon">🌡️</span>
+            <div>
+              <div class="loc-label">Clima en Cachipay</div>
+              <div class="loc-val">22°C promedio · 1.600 msnm · Tierra de Ensueños</div>
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://wa.me/573004436649?text=Hola!%20Quisiera%20ir%20a%20Gym%20Cobalto" target="_blank" class="btn-primary btn-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escríbenos ya
+          </a>
+          <a href="https://www.instagram.com/gymcobalto/" target="_blank" class="btn-secondary">
+            Ver en Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;display:block">Tu momento es ahora</div>
+    <h2 class="cta-title">
+      COMIENZA<br>
+      <span class="line2">TU TRANSFORMACIÓN</span>
+    </h2>
+    <p class="cta-sub">
+      No esperes al lunes. No esperes tener el "físico ideal" para ir al gym.<br>
+      El primer paso es entrar por esa puerta. <strong>$8.000 es todo lo que necesitas hoy.</strong>
+    </p>
+    <div class="cta-actions">
+      <a href="https://wa.me/573004436649?text=Hola!%20Quiero%20comenzar%20en%20Gym%20Cobalto%20hoy" target="_blank" class="btn-primary btn-wa" style="font-size:18px; padding:20px 40px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Empezar ahora por WhatsApp
+      </a>
+      <a href="https://www.instagram.com/gymcobalto/" target="_blank" class="btn-secondary" style="font-size:16px; padding:20px 32px;">
+        📸 Seguirnos en Instagram
+      </a>
+    </div>
+
+    <div style="margin-top:64px; display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--mist)">
+        <span style="color:var(--cobalt-bright)">✓</span> Sin contrato obligatorio
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--mist)">
+        <span style="color:var(--cobalt-bright)">✓</span> Entra desde el primer día
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--mist)">
+        <span style="color:var(--cobalt-bright)">✓</span> Entrenador incluido
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--mist)">
+        <span style="color:var(--cobalt-bright)">✓</span> #1 en Cachipay
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">C</div>
+          <div class="footer-logo-name">GYM COBALTO</div>
+        </div>
+        <p class="footer-desc">El gimnasio #1 de Cachipay, Cundinamarca. Musculación, entrenamiento funcional y cardio. Disciplina que transforma — desde 2020.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/gymcobalto/" target="_blank" class="social-btn" title="Instagram">IG</a>
+          <a href="https://www.facebook.com/p/Gym-Cobalto-61566247414088/" target="_blank" class="social-btn" title="Facebook">FB</a>
+          <a href="https://wa.me/573004436649" target="_blank" class="social-btn" title="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li>Musculación</li>
+          <li>Entrenamiento Funcional</li>
+          <li>Cardio</li>
+          <li>Hábitos Saludables</li>
+          <li>Planes Corporativos</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li>📍 Calle 3 #1-59, Cachipay</li>
+          <li>📱 +57 300 443 6649</li>
+          <li>📸 @gymcobalto</li>
+          <li>⏰ Lun–Vie 5AM–10PM</li>
+          <li>⏰ Sáb 7AM–6PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Gym Cobalto · Cachipay, Cundinamarca · Hecho con <span>♥</span> en la Tierra de Ensueños</p>
+      <p style="color:var(--steel); font-size:12px;">#disciplina · #5AñosDeFuerza · #DeterminaciónSinLímite</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOATING BUTTON -->
+<a href="https://wa.me/573004436649?text=Hola!%20Vi%20la%20p%C3%A1gina%20de%20Gym%20Cobalto%20y%20quiero%20m%C3%A1s%20info" target="_blank" class="wa-float" title="Escríbenos por WhatsApp" aria-label="Contactar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// NAV scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Mobile menu
+function toggleMenu(el) {
+  const links = document.querySelector('.nav-links');
+  const open = links.style.display === 'flex';
+  links.style.display = open ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'absolute';
+  links.style.top = '70px';
+  links.style.left = '0';
+  links.style.right = '0';
+  links.style.background = 'rgba(8,12,18,.98)';
+  links.style.padding = '24px';
+  links.style.gap = '20px';
+  links.style.borderBottom = '1px solid rgba(255,255,255,.07)';
+  if (open) links.style.display = 'none';
+}
+
+// Smooth scroll for anchors
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  });
+});
+
+// Mark today as Tuesday (día de semana)
+// Already marked Lunes as today for demo — in production use JS Date
+</script>
+</body>
+</html>
