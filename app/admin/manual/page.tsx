@@ -188,18 +188,37 @@ export default function ManualPage() {
           <Tip>Guarda siempre con el botón verde <strong>Guardar Perfil</strong> al fondo del formulario.</Tip>
         </Sub>
 
+        <Sub title="Estadísticas de actividad del usuario">
+          <P>En la parte superior del detalle de cada usuario hay un banner con 4 indicadores calculados automáticamente:</P>
+          <Table
+            headers={["Indicador", "Qué muestra"]}
+            rows={[
+              ["Miembro desde", "Fecha de la primera suscripción pagada."],
+              ["Días activos", "Suma total de días cubiertos por todas las suscripciones pagadas."],
+              ["🔥 Racha actual", "Meses consecutivos activos sin interrupciones mayores a 2 días. Si la suscripción más reciente está vencida, la racha es 0."],
+              ["Total pagos", "Número de suscripciones pagadas registradas."],
+            ]}
+          />
+        </Sub>
+
         <Sub title="Registrar una suscripción">
           <P>En la columna derecha del detalle del usuario está la sección <strong style={{ color: "#f0f6fc" }}>Suscripción</strong>.</P>
           <Steps items={[
             'Selecciona el <strong>Tipo de plan</strong> (mensual, quincenal, semestral, etc.).',
-            'Escoge las fechas de <strong>Inicio</strong> y <strong>Fin</strong>. La fecha de hoy se precarga como inicio.',
+            'La <strong>fecha de fin se calcula automáticamente</strong> según el tipo de plan y la fecha de inicio — el campo se muestra en verde con la etiqueta <em>Fin (auto)</em>. Puedes modificarla manualmente si necesitas.',
             'Ingresa el <strong>Monto COP</strong> (por defecto $70.000).',
             'Selecciona el <strong>Estado de pago</strong>: <em>Pagado</em> si ya pagó, <em>Pendiente</em> si falta confirmar.',
             'Selecciona el <strong>Método de pago</strong>: Nequi, Daviplata, Transferencia o Efectivo.',
             'Haz clic en <strong>+ Registrar Suscripción</strong>.',
           ]} />
-          <Tip>Un usuario puede tener múltiples suscripciones históricas. La más reciente con estado <em>Pagado</em> y fecha vigente es la que activa el badge <strong>Activo hasta [fecha]</strong> en la cabecera del usuario.</Tip>
+          <Tip>Lógica de fechas automáticas: mensual = inicio + 30 días (ej. paga el 5 de marzo → acceso hasta el 4 de abril). Quincenal = +14 días. Semanal = +6 días. Trimestral = +3 meses -1 día.</Tip>
+          <Tip>Un usuario puede tener múltiples suscripciones históricas. La más reciente con estado <em>Pagado</em> y fecha vigente activa el acceso al portal.</Tip>
           <Warn>Para <strong>eliminar</strong> una suscripción, haz clic en la <strong style={{ color: "#ef4444" }}>×</strong> roja al lado del registro. Esta acción es permanente.</Warn>
+        </Sub>
+
+        <Sub title="Renovar suscripción vencida rápidamente">
+          <P>Las suscripciones vencidas o pendientes muestran un botón <strong style={{ color: "#22c55e" }}>🔄 Renovar</strong>. Al hacer clic, crea automáticamente una nueva suscripción pagada desde hoy con el mismo plan y monto, calculando las fechas automáticamente.</P>
+          <Tip>Usa <strong>Renovar</strong> cuando el cliente ya pagó y solo necesitas registrar el nuevo período en segundos, sin llenar el formulario completo.</Tip>
         </Sub>
 
         <Sub title="Asignar planes de nutrición o entrenamiento">
@@ -263,7 +282,7 @@ export default function ManualPage() {
             headers={["Botón", "Acción"]}
             rows={[
               ["<strong style='color:#22c55e'>Marcar pagado</strong>", "Aparece cuando el estado es <em>Pendiente</em> o <em>Vencido</em>. Confirma el pago."],
-              ["<strong style='color:#ef4444'>Vencido</strong>", "Aparece cuando el estado es <em>Pagado</em> o <em>Pendiente</em>. Marca como expirado."],
+              ["<strong style='color:#ef4444'>Marcar vencido</strong>", "Aparece cuando el estado es <em>Pagado</em> o <em>Pendiente</em>. Marca como expirado."],
               ["Ver usuario", "Navega al detalle del usuario para más acciones."],
             ]}
           />
@@ -324,16 +343,16 @@ export default function ManualPage() {
           <Table
             headers={["Sección del portal", "Qué muestra"]}
             rows={[
-              ["Dashboard del portal", "Bienvenida con su nombre, accesos rápidos y banner motivacional."],
-              ["Planes (<code>/portal/planes</code>)", "Lista de planes de contenido disponibles (actualmente muestra planes del sistema, no los asignados dinámicamente)."],
+              ["Dashboard (<code>/portal</code>)", "Bienvenida con su nombre, accesos rápidos y banner motivacional."],
+              ["Nutrición (<code>/portal/planes</code>)", "Lista de planes de contenido del sistema. Al hacer clic en uno ve todos sus módulos semana a semana."],
+              ["Rutinas (<code>/portal/rutinas</code>)", "Planes de tipo <em>Entrenamiento</em> o <em>Mixto</em> que Edwin le ha asignado directamente. Si no tiene ninguno, ve un mensaje con botón de WhatsApp."],
+              ["Progreso (<code>/portal/progreso</code>)", "Sus medidas corporales (peso, cintura, cadera, pecho) registradas por Edwin, con tarjetas de valor actual y diferencia vs. medición inicial."],
+              ["Mi perfil (<code>/portal/perfil</code>)", "Sus datos personales (nombre, correo, teléfono, objetivo) y el estado de su membresía activa con días restantes y detalle del último pago."],
             ]}
           />
         </Sub>
         <Limit>
-          <strong>Limitación actual del portal:</strong> La sección de Planes del portal (<code>/portal/planes</code>) muestra un listado estático del sistema, no los planes personalizados que Edwin asigna a cada usuario. Esta funcionalidad está pendiente de implementar. Por ahora, comparte el contenido del plan directamente por WhatsApp o muéstraselo en persona.
-        </Limit>
-        <Limit>
-          Las estadísticas del portal (<em>Días activos</em>, <em>Semana actual</em>) son decorativas — no se calculan dinámicamente todavía.
+          Las estadísticas del dashboard del portal (<em>Días activos</em>, <em>Semana actual</em>) son decorativas — no se calculan dinámicamente todavía.
         </Limit>
         <Sub title="Cómo darle acceso al cliente">
           <Steps items={[
@@ -361,11 +380,12 @@ export default function ManualPage() {
           ]} />
         </Sub>
         <Sub title="Renovar suscripción mensual">
+          <P><strong style={{ color: "#f0f6fc" }}>Opción rápida:</strong> En el detalle del usuario, haz clic en <strong style={{ color: "#22c55e" }}>🔄 Renovar</strong> junto a la suscripción vencida. Crea el nuevo período desde hoy en un solo clic.</P>
+          <P><strong style={{ color: "#f0f6fc" }}>Opción manual:</strong> Si necesitas ajustar el monto o el método de pago:</P>
           <Steps items={[
             'Ir a <strong>Suscripciones</strong> y filtrar por <em>Vencidos</em> o revisar <em>Vencen en 7 días</em> en el dashboard.',
             'Hacer clic en <strong>Ver usuario</strong>.',
-            'Registrar una nueva suscripción con las fechas del nuevo período.',
-            '(Opcional) Eliminar la suscripción vencida para mantener el historial limpio.',
+            'Usar el formulario de suscripción para registrar el nuevo período — las fechas se calculan automáticamente.',
           ]} />
         </Sub>
         <Sub title="Actualizar el plan de un cliente">
@@ -395,8 +415,8 @@ export default function ManualPage() {
               body: "Solo se puede crear y eliminar. Para corregir datos (monto, fechas), hay que eliminar la suscripción incorrecta y crear una nueva.",
             },
             {
-              title: "El portal del cliente no muestra planes asignados dinámicamente",
-              body: "Los clientes ven una lista de planes genérica, no los planes específicamente asignados desde el panel. Funcionalidad pendiente.",
+              title: "Planes de nutrición en el portal son estáticos",
+              body: "La sección Nutrición (/portal/planes) muestra un listado general del sistema. Los planes de entrenamiento asignados sí se muestran dinámicamente en la sección Rutinas. Nutrición personalizada por usuario está pendiente.",
             },
             {
               title: "No se puede cambiar el email de un usuario",
@@ -431,7 +451,7 @@ export default function ManualPage() {
       </Section>
 
       <div style={{ marginTop: 40, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,.07)", fontSize: 11, color: "#30363d", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span>Gym Cobalto · Panel Admin v1.0</span>
+        <span>Gym Cobalto · Panel Admin v1.2</span>
         <span>Última actualización: agosto 2026</span>
       </div>
     </div>
