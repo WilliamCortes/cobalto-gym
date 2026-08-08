@@ -43,7 +43,7 @@ export default async function AdminDashboard() {
       .order("created_at", { ascending: false }).limit(5),
   ]);
 
-  const recentSubUserIds = [...new Set((recentSubs ?? []).map((s) => s.user_id))];
+  const recentSubUserIds = Array.from(new Set((recentSubs ?? []).map((s) => s.user_id)));
   const { data: recentSubProfiles } = recentSubUserIds.length > 0
     ? await supabase.from("profiles").select("id, full_name, email").in("id", recentSubUserIds)
     : { data: [] as { id: string; full_name: string | null; email: string | null }[] };

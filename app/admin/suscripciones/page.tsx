@@ -21,7 +21,7 @@ export default async function SuscripcionesPage({ searchParams }: { searchParams
 
   const { data: subs } = await query;
 
-  const userIds = [...new Set((subs ?? []).map((s) => s.user_id))];
+  const userIds = Array.from(new Set((subs ?? []).map((s) => s.user_id)));
   const { data: profilesData } = userIds.length > 0
     ? await supabase.from("profiles").select("id, full_name, email").in("id", userIds)
     : { data: [] as { id: string; full_name: string | null; email: string | null }[] };

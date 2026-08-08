@@ -32,7 +32,7 @@ export default async function PlanEditorPage({ params }: Props) {
   if (!plan) notFound();
 
   const mods = (modules ?? []) as Mod[];
-  const weeks = [...new Set(mods.map((m) => m.week_number))].sort((a, b) => a - b);
+  const weeks = Array.from(new Set(mods.map((m) => m.week_number))).sort((a, b) => a - b);
   const maxWeek = weeks.length > 0 ? Math.max(...weeks) : 0;
 
   async function handleUpdatePlan(formData: FormData) {
