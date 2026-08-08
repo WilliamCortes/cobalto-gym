@@ -9,6 +9,7 @@ const NAV = [
   { href: "/admin/usuarios", label: "Usuarios", icon: "👥", exact: false },
   { href: "/admin/planes", label: "Planes", icon: "📋", exact: false },
   { href: "/admin/suscripciones", label: "Suscripciones", icon: "💳", exact: false },
+  { href: "/admin/manual", label: "Manual", icon: "📖", exact: false },
 ];
 
 export default function AdminNav({ adminName }: { adminName: string }) {

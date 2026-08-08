@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
   updateProfile, createSubscription, deleteSubscription,
-  createTask, deleteTask, addProgressEntry, deleteProgressEntry,
+  createTask, deleteTask, toggleTask, addProgressEntry, deleteProgressEntry,
   assignPlan, removePlanAssignment,
 } from "@/lib/actions";
 
@@ -159,13 +159,14 @@ export default async function UserDetailPage({ params }: Props) {
             </form>
             {(progress ?? []).length > 0 && (
               <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 8 }}>
-                {(progress ?? []).slice(0, 5).map((p) => (
+                {(progress ?? []).map((p) => (
                   <div key={p.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 12px", background: "#161b22", borderRadius: 8, fontSize: 12 }}>
                     <div style={{ color: "#8b949e" }}>{p.recorded_at}</div>
-                    <div style={{ display: "flex", gap: 12, color: "#f0f6fc" }}>
+                    <div style={{ display: "flex", gap: 12, color: "#f0f6fc", flexWrap: "wrap" }}>
                       {p.weight_kg && <span>{p.weight_kg}kg</span>}
                       {p.waist_cm && <span>Cin:{p.waist_cm}cm</span>}
                       {p.hip_cm && <span>Cad:{p.hip_cm}cm</span>}
+                      {p.chest_cm && <span>Pec:{p.chest_cm}cm</span>}
                     </div>
                     <form action={deleteProgressEntry.bind(null, p.id, id)}>
                       <button type="submit" style={{ background: "none", border: "none", color: "#ef4444", cursor: "pointer", fontSize: 14 }}>×</button>
@@ -270,11 +271,14 @@ export default async function UserDetailPage({ params }: Props) {
               <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 6 }}>
                 {(tasks ?? []).map((task) => (
                   <div key={task.id} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: "#161b22", borderRadius: 8 }}>
-                    <div style={{ width: 18, height: 18, borderRadius: 4, border: `2px solid ${task.completed ? "#22c55e" : "#30363d"}`, background: task.completed ? "#22c55e20" : "transparent", flexShrink: 0, marginTop: 1 }}>
-                      {task.completed && <span style={{ display: "block", textAlign: "center", fontSize: 10, color: "#22c55e", lineHeight: "14px" }}>✓</span>}
-                    </div>
+                    <form action={toggleTask.bind(null, task.id, id, !task.completed)}>
+                      <button type="submit" style={{ width: 18, height: 18, borderRadius: 4, border: `2px solid ${task.completed ? "#22c55e" : "#30363d"}`, background: task.completed ? "#22c55e20" : "transparent", flexShrink: 0, marginTop: 1, cursor: "pointer", padding: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        {task.completed && <span style={{ fontSize: 10, color: "#22c55e", lineHeight: 1 }}>✓</span>}
+                      </button>
+                    </form>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 12, color: task.completed ? "#8b949e" : "#f0f6fc", textDecoration: task.completed ? "line-through" : "none" }}>{task.title}</div>
+                      {task.description && <div style={{ fontSize: 11, color: "#8b949e", marginTop: 1 }}>{task.description}</div>}
                       {task.due_date && <div style={{ fontSize: 10, color: "#8b949e", marginTop: 2 }}>Vence: {task.due_date}</div>}
                     </div>
                     <form action={deleteTask.bind(null, task.id, id)}>

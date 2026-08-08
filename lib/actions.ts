@@ -159,6 +159,13 @@ export async function createTask(formData: FormData) {
   revalidatePath(`/admin/usuarios/${userId}`);
 }
 
+export async function toggleTask(id: string, userId: string, completed: boolean) {
+  const { supabase } = await requireAdmin();
+  const { error } = await supabase.from("tasks").update({ completed }).eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/usuarios/${userId}`);
+}
+
 export async function deleteTask(id: string, userId: string) {
   const { supabase } = await requireAdmin();
   const { error } = await supabase.from("tasks").delete().eq("id", id);
