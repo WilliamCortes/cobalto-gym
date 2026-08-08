@@ -12,7 +12,7 @@ export default async function SuscripcionesPage({ searchParams }: { searchParams
 
   let query = supabase
     .from("subscriptions")
-    .select("id, user_id, plan_type, start_date, end_date, amount, payment_status, payment_method, notes, created_at, profiles(id, full_name, email)")
+    .select("id, user_id, plan_type, start_date, end_date, amount, payment_status, payment_method, notes, created_at")
     .order("end_date", { ascending: true });
 
   if (status && ["paid", "pending", "overdue"].includes(status)) {
@@ -20,6 +20,12 @@ export default async function SuscripcionesPage({ searchParams }: { searchParams
   }
 
   const { data: subs } = await query;
+
+  const userIds = [...new Set((subs ?? []).map((s) => s.user_id))];
+  const { data: profilesData } = userIds.length > 0
+    ? await supabase.from("profiles").select("id, full_name, email").in("id", userIds)
+    : { data: [] as { id: string; full_name: string | null; email: string | null }[] };
+  const profileMap = Object.fromEntries((profilesData ?? []).map((p) => [p.id, p]));
 
   const { count: totalActive } = await supabase.from("subscriptions").select("*", { count: "exact", head: true }).gte("end_date", today).eq("payment_status", "paid");
   const { count: totalPending } = await supabase.from("subscriptions").select("*", { count: "exact", head: true }).in("payment_status", ["pending", "overdue"]);
@@ -85,7 +91,7 @@ export default async function SuscripcionesPage({ searchParams }: { searchParams
           </thead>
           <tbody>
             {(subs ?? []).map((s) => {
-              const profile = s.profiles as unknown as { id: string; full_name: string | null; email: string | null } | null;
+              const profile = profileMap[s.user_id] ?? null;
               const isExpired = s.end_date < today;
               return (
                 <tr key={s.id} style={{ borderBottom: "1px solid rgba(255,255,255,.04)", background: isExpired && s.payment_status !== "paid" ? "rgba(239,68,68,.03)" : "transparent" }}>
