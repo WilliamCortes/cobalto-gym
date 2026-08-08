@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Bienestar"
 keywords: "beneficios del gimnasio, beneficios del ejercicio, por qué ir al gimnasio, gym Cachipay, salud y ejercicio Cundinamarca"
-image: "/images/gym-interior.jpg"
+image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 La primera semana que abrí Gym Cobalto en Cachipay, un cliente me dijo algo que no olvido: "Vine porque quiero verme bien en el espejo, nada más." Cinco años después, ese mismo hombre me dice que el gimnasio le salvó la vida. No exagera.

@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Entrenamiento"
 keywords: "cómo ganar músculo principiante, sobrecarga progresiva, rutina para principiantes gym, ganar músculo Cachipay, entrenamiento fuerza Cundinamarca"
-image: "/images/gym-interior.jpg"
+image: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 Cada semana llega alguien nuevo a Gym Cobalto con la misma pregunta: "Edwin, ¿qué tengo que hacer para ganar músculo?" Y cada vez me esfuerzo en dar la misma respuesta honesta: no es complicado, pero tampoco es lo que ves en redes sociales.

@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Entrenamiento Personal"
 keywords: "entrenador personal Cachipay, coach fitness Cundinamarca, personal trainer gym Cachipay, resultados más rápidos gimnasio, Edwin González coach"
-image: "/images/gym-interior.jpg"
+image: "https://images.unsplash.com/photo-1664298352263-9cf691753fce?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 Voy a ser honesto desde el principio: soy entrenador personal. Podría parecer que tengo un interés directo en convencerte de que necesitas uno. Y lo tengo.

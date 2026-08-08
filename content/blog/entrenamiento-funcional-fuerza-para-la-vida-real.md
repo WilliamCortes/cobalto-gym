@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Entrenamiento"
 keywords: "entrenamiento funcional Cachipay, funcional gym Cundinamarca, clases funcionales Cachipay, fuerza funcional, beneficios entrenamiento funcional"
-image: "/images/gym-interior.jpg"
+image: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 Un día llegó a Gym Cobalto un señor de 48 años. Me dijo que quería "estar en forma." Le pregunté para qué. Se quedó callado un momento y luego me dijo: "Para poder jugar con mis hijos sin quedarme sin aliento. Para cargar los mercados sin que me duela la espalda. Para no sentir que el cuerpo se me está cayendo a pedazos."

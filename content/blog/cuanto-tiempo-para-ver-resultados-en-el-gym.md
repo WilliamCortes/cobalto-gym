@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Motivación"
 keywords: "cuánto tiempo para ver resultados gym, tiempo para ver cambios gimnasio, resultados gimnasio Cachipay, cuándo se ven resultados ejercicio, gym Cundinamarca"
-image: "/images/gym-interior.jpg"
+image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 La tercera semana es la más peligrosa.

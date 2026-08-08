@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Mentalidad"
 keywords: "cómo ser constante en el gimnasio, hábito de ejercicio, motivación gym, constancia entrenamiento Cachipay, no abandonar el gimnasio"
-image: "/images/gym-interior.jpg"
+image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 En cinco años como coach en Cachipay, he visto de todo. Clientes que entran con una energía arrolladora en enero y desaparecen en febrero. Otros que llegan sin fanfarria, sin declaraciones públicas, sin ropa nueva de marca — y siguen aquí tres años después.

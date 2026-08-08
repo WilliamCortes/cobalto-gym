@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Entrenamiento"
 keywords: "mejor hora para entrenar, gym mañana o tarde, horario entrenamiento, gym Cachipay horarios, cuándo entrenar Cundinamarca"
-image: "/images/gym-interior.jpg"
+image: "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 Gym Cobalto en Cachipay abre a las 5 de la mañana. No es un capricho. Es porque sé que para muchos de mis clientes — personas que trabajan, que tienen familia, que viven en el municipio o vienen desde La Mesa o El Colegio — la mañana es el único momento real que tienen.

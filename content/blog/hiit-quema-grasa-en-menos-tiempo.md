@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Entrenamiento"
 keywords: "HIIT quemar grasa, entrenamiento funcional Cachipay, HIIT Cundinamarca, cardio intensivo gym, quemar calorías rápido gym Cachipay"
-image: "/images/gym-interior.jpg"
+image: "https://images.unsplash.com/photo-1576678927484-cc907957088c?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 Hay una escena que se repite cada semana en Gym Cobalto. Alguien llega por primera vez a la clase de funcional, mira el circuito preparado, y me pregunta: "¿Cuánto tiempo dura?" Le digo que 25 minutos. Se relaja. Veinte minutos después, entiendo por qué no se lo conté antes.
