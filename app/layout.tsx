@@ -77,6 +77,77 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "¿Cuánto cuesta el gimnasio en Cachipay?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Gym Cobalto ofrece planes desde $8.000 por día, $35.000 semanal, $70.000 mensual, $190.000 trimestral, $360.000 semestral y $690.000 anual. Todos los precios en pesos colombianos. No hay costo de matrícula ni cargos adicionales.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Cuál es el gimnasio en Cachipay, Cundinamarca?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Gym Cobalto es el gimnasio #1 de Cachipay, ubicado en la Calle 3 #1-63, Vía al Colegio Departamental. Tiene más de 5 años de trayectoria y ofrece musculación, entrenamiento funcional, cardio y entrenador personal.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Cuáles son los horarios de Gym Cobalto?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Lunes a viernes: 5:00 a.m. a 11:30 a.m. y 4:00 p.m. a 10:00 p.m. Sábados: 7:30 a.m. a 12:00 p.m. Domingos cerrado.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Hay gimnasio cerca de La Mesa, Cundinamarca?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sí. Gym Cobalto en Cachipay está a solo 13 km de La Mesa, aproximadamente 15 minutos en carro por la Autopista del Tequendama. Es el gimnasio completo más cercano a La Mesa en la región.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Hay gimnasio cerca de Anapoima?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sí. Gym Cobalto en Cachipay está a 25 km de Anapoima, unos 28 minutos en carro por la vía Bogotá–Girardot. Es la opción de gimnasio profesional más próxima a Anapoima.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Qué servicios tiene Gym Cobalto?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Gym Cobalto ofrece: zona de musculación con máquinas profesionales y pesas libres, área de entrenamiento funcional (HIIT y CrossFit-style), cardio con bicicletas estáticas y elípticas, y servicio de entrenador personal con Edwin González (coach certificado con más de 5 años de experiencia).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Cómo pagar la membresía en Gym Cobalto?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Gym Cobalto acepta pago en efectivo, Nequi, Daviplata y transferencia bancaria. Puedes iniciar contactando al 300 443 6649 por WhatsApp.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Cómo llegar a Gym Cobalto?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "La dirección es Calle 3 #1-63, Vía al Colegio Departamental, Cachipay, Cundinamarca, Colombia. Desde Bogotá toma la Autopista Bogotá–Girardot y sigue las indicaciones hacia Cachipay. Coordenadas GPS: 4.7284, -74.5305.",
+      },
+    },
+  ],
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ExerciseGym",
@@ -129,6 +200,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
         />
       </head>
       <body>{children}</body>
