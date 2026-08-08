@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ── Brand palette ─────────────────────────── */
+  --color-cobalt:        #16A34A;
+  --color-cobalt-bright: #22C55E;
+  --color-cobalt-deep:   #052e16;
+  --color-cobalt-glow:   rgba(22,163,74,0.45);
+  --color-gold:          #FFC107;
+  --color-gold-dark:     #E6A800;
+
+  /* ── Dark surface stack ──────────────────── */
+  --color-ink:    #080C12;
+  --color-ink2:   #111620;
+  --color-ink3:   #1C2333;
+  --color-steel:  #2A3347;
+  --color-mist:   #8B95AA;
+  --color-fog:    #C8CDD8;
+  --color-snow:   #F4F7FF;
+
+  /* ── Fonts (set by next/font in layout) ─── */
+  --font-display: var(--font-bebas), "Arial Narrow", Arial, sans-serif;
+  --font-body:    var(--font-inter), system-ui, sans-serif;
+
+  /* ── Radii ───────────────────────────────── */
+  --radius-sm: 8px;
+  --radius:    12px;
+  --radius-lg: 20px;
+}
+
+/* ── Global reset ──────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-snow);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ── Animations ────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes gridFade {
+  from { opacity: 0.4; }
+  to   { opacity: 1; }
+}
+@keyframes pulse-scale {
+  0%, 100% { transform: translateY(-50%) scale(1); filter: brightness(1); }
+  50%       { transform: translateY(-53%) scale(1.03); filter: brightness(1.2); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-fade-up {
+  animation: fadeSlideUp 0.8s ease both;
+}
+.animate-fade-up-1 { animation: fadeSlideUp 0.8s 0.15s ease both; }
+.animate-fade-up-2 { animation: fadeSlideUp 0.8s 0.30s ease both; }
+.animate-fade-up-3 { animation: fadeSlideUp 0.8s 0.45s ease both; }
+.animate-fade-up-4 { animation: fadeSlideUp 0.8s 0.60s ease both; }
+.animate-grid-fade { animation: gridFade 4s ease-in-out infinite alternate; }
+.animate-pulse-el  { animation: pulse-scale 3s ease-in-out infinite; }
+.animate-blink     { animation: blink 1.4s ease-in-out infinite; }
+.animate-ticker    { animation: ticker 22s linear infinite; }
+
+/* ── Reusable section tokens ────────────────── */
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-cobalt-bright);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--color-snow);
+  margin-bottom: 20px;
+}
+
+.section-lead {
+  font-size: 18px;
+  color: var(--color-mist);
+  line-height: 1.7;
+  max-width: 620px;
+  margin-bottom: 48px;
+}
+
+/* ── WhatsApp icon path ───────────────────── */
+/* shared across components */
+.wa-path { fill: currentColor; }

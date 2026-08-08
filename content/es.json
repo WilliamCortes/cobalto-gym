@@ -1,0 +1,407 @@
+{
+  "meta": {
+    "title": "Gym Cobalto · Cachipay · Disciplina que Transforma",
+    "titleTemplate": "%s | Gym Cobalto Cachipay",
+    "description": "Gym Cobalto — el gimnasio #1 de Cachipay, Cundinamarca. Musculación, entrenamiento funcional y cardio. Planes desde $8.000/día. Vía al Colegio Departamental, Calle 3 #1-63.",
+    "keywords": "gym cachipay, gimnasio cachipay, musculación cachipay, entrenamiento funcional cachipay, cardio cachipay, gym cobalto, Edwin González entrenador, cachipay cundinamarca, fitness cachipay, gym cundinamarca, gimnasio cerca la mesa, gym anapoima",
+    "author": "Gym Cobalto · Edwin González",
+    "siteUrl": "https://gymcobalto.vercel.app",
+    "ogTitle": "Gym Cobalto · Cachipay · Disciplina que Transforma",
+    "ogDescription": "El gimnasio #1 de Cachipay. 5 años forjando cuerpos y comunidad. Musculación, funcional y cardio. Desde $8.000/día.",
+    "twitterTitle": "Gym Cobalto · Cachipay",
+    "twitterDescription": "El gimnasio #1 de Cachipay. Musculación, funcional y cardio desde $8.000/día."
+  },
+  "brand": {
+    "name": "Gym Cobalto",
+    "phone": "+573004436649",
+    "phoneDisplay": "300 443 6649",
+    "address": "Calle 3 #1-63",
+    "city": "Cachipay",
+    "region": "Cundinamarca",
+    "country": "Colombia",
+    "postalCode": "253020",
+    "instagram": "https://www.instagram.com/gymcobalto/",
+    "facebook": "https://www.facebook.com/p/Gym-Cobalto-61566247414088/",
+    "whatsapp": "https://wa.me/573004436649",
+    "mapsUrl": "https://maps.google.com/maps?q=Gym+Cobalto+Calle+3+Cachipay+Cundinamarca+Colombia",
+    "founder": "Edwin González",
+    "founderTitle": "CEO & Coach",
+    "founderInstagram": "https://www.instagram.com/edwin.gonzalez.d/",
+    "yearsActive": 5,
+    "tagline": "Disciplina que Transforma",
+    "subtagline": "Disciplina · Enfoque · Resultados"
+  },
+  "nav": {
+    "links": [
+      { "label": "Servicios", "href": "#servicios" },
+      { "label": "Planes", "href": "#planes" },
+      { "label": "Horarios", "href": "#horarios" },
+      { "label": "Nosotros", "href": "#nosotros" },
+      { "label": "Ubicación", "href": "#ubicacion" }
+    ],
+    "cta": "¡Empieza hoy!",
+    "ctaHref": "https://wa.me/573004436649?text=Hola!%20Quiero%20info%20de%20Gym%20Cobalto",
+    "portalLink": "Mi portal",
+    "portalHref": "/portal"
+  },
+  "hero": {
+    "badge": "#1 Gimnasio de Cachipay · Vía al Colegio Departamental",
+    "h1Line1": "FORJA",
+    "h1Line2": "TU MEJOR",
+    "h1Line3": "VERSIÓN",
+    "sub": "DISCIPLINA QUE TRANSFORMA",
+    "desc": "El gimnasio líder de Cachipay. 5 años forjando cuerpos y comunidad en un ambiente agradable, con maravillosos paisajes y amplia vegetación a 22°C. Musculación, funcional y cardio — desde <strong>$8.000/día</strong>.",
+    "ctaPrimary": "Quiero empezar",
+    "ctaPrimaryHref": "https://wa.me/573004436649?text=Hola!%20Quiero%20comenzar%20en%20Gym%20Cobalto",
+    "ctaSecondary": "Ver planes y precios",
+    "ctaSecondaryHref": "#planes",
+    "stats": [
+      { "value": "5+", "accent": "5", "suffix": "+", "label": "Años de trayectoria" },
+      { "value": "#1", "accent": "#1", "suffix": "", "label": "Gym en Cachipay" },
+      { "value": "$8k", "accent": "$8k", "suffix": "", "label": "Desde / día" }
+    ],
+    "elementLabel": "Elemento 27"
+  },
+  "ticker": {
+    "items": [
+      "MUSCULACIÓN",
+      "ENTRENAMIENTO FUNCIONAL",
+      "CARDIO",
+      "HÁBITOS SALUDABLES",
+      "CAMBIOS FÍSICOS REALES",
+      "CACHIPAY · TIERRA DE ENSUEÑOS",
+      "#DISCIPLINA",
+      "5 AÑOS DE FUERZA",
+      "CEO & COACH EDWIN GONZÁLEZ",
+      "DETERMINACIÓN SIN LÍMITE"
+    ]
+  },
+  "services": {
+    "eyebrow": "Lo que ofrecemos",
+    "title": "TODO LO QUE\nNECESITAS",
+    "lead": "Tres disciplinas, un solo lugar. Equipos completos, ambiente real, entrenador disponible.",
+    "items": [
+      {
+        "icon": "🏋️",
+        "name": "MUSCULACIÓN",
+        "desc": "Zona completa de pesas libres: mancuernas, barras, máquinas de cables y poleas. El corazón del gym, diseñado para quienes buscan resultados reales en fuerza y volumen muscular.",
+        "tag": "Foco principal",
+        "comingSoon": false
+      },
+      {
+        "icon": "⚡",
+        "name": "FUNCIONAL",
+        "desc": "Entrenamiento de alta intensidad con enfoque militar. Circuitos, trabajo con peso corporal y resistencia funcional. Para quienes quieren quemar grasa y ganar rendimiento al mismo tiempo.",
+        "tag": "Alta intensidad",
+        "comingSoon": false
+      },
+      {
+        "icon": "🫀",
+        "name": "CARDIO",
+        "desc": "Zona cardiovascular con máquinas para mejorar resistencia, quemar calorías y fortalecer el corazón. El complemento perfecto para una rutina de musculación completa.",
+        "tag": "Resistencia",
+        "comingSoon": false
+      },
+      {
+        "icon": "🏃",
+        "name": "ZONA FIT",
+        "desc": "Espacios para clases grupales, entrenamientos en comunidad y nuevas máquinas. Próximamente disponible — seguimos mejorando por ustedes y para ustedes.",
+        "tag": "Próximamente",
+        "comingSoon": true
+      }
+    ]
+  },
+  "whyUs": {
+    "eyebrow": "Por qué Cobalto",
+    "title": "EL GYM QUE\nTE ENALTECE",
+    "lead": "No somos el más grande — somos el que más te importa. El único gym de Cachipay donde el entrenador te conoce por nombre.",
+    "points": [
+      {
+        "icon": "🥇",
+        "title": "El #1 del pueblo",
+        "desc": "El único gimnasio en Cachipay con comunidad real, transformaciones documentadas y 5 años de presencia activa. Lo dicen nuestros propios afiliados, no nosotros."
+      },
+      {
+        "icon": "📍",
+        "title": "Vía al Colegio Departamental",
+        "desc": "Calle 3 #1-63, fácil de encontrar y fácil de llegar. Sin excusas de distancia: el gym más accesible de Cachipay en precio y ubicación."
+      },
+      {
+        "icon": "👤",
+        "title": "Edwin González — CEO & Coach",
+        "desc": "Fundador, CEO & Coach. Cachipayuno que empezó con un espacio pequeño y una idea grande: transformar vidas en su propio pueblo."
+      },
+      {
+        "icon": "💰",
+        "title": "Accesible para todos, sin excusas",
+        "desc": "Planes desde $8.000/día. Porque la transformación no debería tener barrera de entrada. Mensualidades y paquetes para cada bolsillo."
+      },
+      {
+        "icon": "🌿",
+        "title": "Ambiente, paisajes y vegetación",
+        "desc": "Entrenas rodeado de la naturaleza de Cachipay — maravillosos paisajes y amplia vegetación a 22°C. Una experiencia que ningún gym de ciudad puede darte."
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Planes y precios",
+    "title": "EMPIEZA HOY\nSIN EXCUSAS",
+    "lead": "Del día al año — el plan que se adapta a tu ritmo. Sin contratos forzados, sin letra pequeña.",
+    "quickPlans": [
+      { "name": "Día", "price": "$8.000", "waText": "Quiero%20el%20plan%20dia%20de%20Gym%20Cobalto" },
+      { "name": "Semana", "price": "$35.000", "waText": "Quiero%20el%20plan%20semana%20de%20Gym%20Cobalto" },
+      { "name": "Quincena", "price": "$45.000", "waText": "Quiero%20el%20plan%20quincena%20de%20Gym%20Cobalto" }
+    ],
+    "mainPlans": [
+      {
+        "name": "Plan Básico",
+        "price": "70.000",
+        "period": "por mes · acceso libre",
+        "featured": false,
+        "features": [
+          { "included": true, "text": "Acceso ilimitado todo el mes" },
+          { "included": true, "text": "Musculación, funcional y cardio" },
+          { "included": true, "text": "Sin compromiso de permanencia" },
+          { "included": false, "text": "Guía de rutina con Edwin" },
+          { "included": false, "text": "Plan alimentación personalizado" }
+        ],
+        "ctaLabel": "Inscribirme",
+        "waText": "Quiero%20el%20plan%20basico%20mensual%20de%20Gym%20Cobalto"
+      },
+      {
+        "name": "Semi-Asistido",
+        "price": "120.000",
+        "period": "por mes · con guía de Edwin",
+        "featured": true,
+        "badge": "MÁS POPULAR",
+        "features": [
+          { "included": true, "text": "Acceso ilimitado todo el mes" },
+          { "included": true, "text": "Rutina diseñada a tu objetivo" },
+          { "included": true, "text": "Seguimiento de progreso" },
+          { "included": true, "text": "Corrección de técnica" },
+          { "included": false, "text": "Sesiones 1 a 1 con Edwin" }
+        ],
+        "ctaLabel": "Quiero este plan",
+        "waText": "Quiero%20el%20plan%20semi-asistido%20de%20Gym%20Cobalto"
+      },
+      {
+        "name": "Personalizado",
+        "price": "600.000",
+        "period": "por mes · atención 1 a 1",
+        "featured": false,
+        "features": [
+          { "included": true, "text": "Acceso ilimitado todo el mes" },
+          { "included": true, "text": "Sesiones personales con Edwin" },
+          { "included": true, "text": "Plan de alimentación a tu medida" },
+          { "included": true, "text": "Seguimiento diario de resultados" },
+          { "included": true, "text": "Máxima transformación garantizada" }
+        ],
+        "ctaLabel": "Consultar disponibilidad",
+        "waText": "Quiero%20el%20plan%20personalizado%20de%20Gym%20Cobalto"
+      }
+    ],
+    "durationTitle": "Plan Básico — descuentos por compromiso",
+    "durationPlans": [
+      { "label": "Trimestre", "price": "$170.000", "perMonth": "≈ $56.600 / mes", "best": false },
+      { "label": "Semestre", "price": "$320.000", "perMonth": "≈ $53.300 / mes", "best": false },
+      { "label": "Anual 🏆", "price": "$600.000", "perMonth": "≈ $50.000 / mes", "best": true }
+    ],
+    "groupPlans": [
+      {
+        "icon": "👫",
+        "name": "Plan Pareja",
+        "note": "Dos personas · mismo plan",
+        "price": "$65.000 c/u/mes",
+        "waText": "Quiero%20el%20plan%20pareja%20de%20Gym%20Cobalto"
+      },
+      {
+        "icon": "👨‍👩‍👧",
+        "name": "Plan Familiar",
+        "note": "3 o más del mismo hogar",
+        "price": "$60.000 c/u/mes",
+        "waText": "Quiero%20el%20plan%20familiar%20de%20Gym%20Cobalto"
+      }
+    ],
+    "paymentTitle": "💳 Pagos virtuales — fácil y seguro",
+    "paymentMethods": [
+      { "label": "💜 Nequi", "number": "300 443 6649" },
+      { "label": "🔴 Daviplata", "number": "300 443 6649" },
+      { "label": "🏦 Transferencia por llave", "number": "300 443 6649" }
+    ],
+    "paymentNote": "Envía tu comprobante por WhatsApp al <strong>300 443 6649</strong> y sigue enfocado en tu mejor versión."
+  },
+  "schedule": {
+    "eyebrow": "Horarios",
+    "title": "SIEMPRE\nABIERTOS",
+    "lead": "Doble jornada de lunes a viernes — mañana y tarde. Sábados media jornada. Sin excusa para no entrenar.",
+    "days": [
+      { "name": "Lunes", "hours": ["5:00 AM – 11:30 AM", "4:00 PM – 10:00 PM"], "tag": "Doble jornada", "closed": false },
+      { "name": "Martes", "hours": ["5:00 AM – 11:30 AM", "4:00 PM – 10:00 PM"], "tag": "Doble jornada", "closed": false },
+      { "name": "Miércoles", "hours": ["5:00 AM – 11:30 AM", "4:00 PM – 10:00 PM"], "tag": "Doble jornada", "closed": false },
+      { "name": "Jueves", "hours": ["5:00 AM – 11:30 AM", "4:00 PM – 10:00 PM"], "tag": "Doble jornada", "closed": false },
+      { "name": "Viernes", "hours": ["5:00 AM – 11:30 AM", "4:00 PM – 10:00 PM"], "tag": "Doble jornada", "closed": false },
+      { "name": "Sábado", "hours": ["7:30 AM – 12:00 M"], "tag": "Media jornada", "closed": false },
+      { "name": "Domingo", "hours": ["Cerrado"], "tag": "Día de descanso", "closed": true }
+    ],
+    "note": "📣 <strong>Horarios actualizados:</strong> Confirmamos siempre en nuestro Instagram <a href=\"https://instagram.com/gymcobalto\" class=\"text-cobalt-bright\">@gymcobalto</a> o escríbenos al WhatsApp para enterarte de cambios de temporada."
+  },
+  "testimonials": {
+    "eyebrow": "Testimonios",
+    "title": "LO DICEN\nNUESTROS AFILIADOS",
+    "items": [
+      {
+        "stars": 5,
+        "text": "Ha sido un camino de mejora constante, todo gracias a las personas que han creído en el proceso. En Gym Cobalto se disfruta de un ambiente agradable, con maravillosos paisajes.",
+        "author": "Edwin G.",
+        "role": "Fundador · CEO & Coach",
+        "initial": "E"
+      },
+      {
+        "stars": 5,
+        "text": "Después de notar cambios positivos en mi apariencia física y en mi mentalidad con constancia y disciplina, Cobalto demostró que se puede equilibrar el estudio con el fitness.",
+        "author": "Sebastián O.",
+        "role": "Afiliado · 18 años · Cachipay",
+        "initial": "S"
+      },
+      {
+        "stars": 5,
+        "text": "Excelente que sigas creciendo y con ellos sumando éxitos y cambiando vidas. El mejor del pueblo, eso es Gym Cobalto. Muy recomendado para los de La Mesa y Anapoima también.",
+        "author": "Gustavo A.",
+        "role": "Afiliado · Anapoima",
+        "initial": "G"
+      }
+    ]
+  },
+  "location": {
+    "eyebrow": "Dónde estamos",
+    "title": "EN EL CORAZÓN\nDE CACHIPAY",
+    "lead": "Vía al Colegio Departamental, Calle 3 #1-63. El gym más accesible del municipio.",
+    "details": [
+      { "icon": "📍", "label": "Dirección", "value": "Calle 3 #1-63, Cachipay\nCundinamarca · CP 253020" },
+      { "icon": "📱", "label": "WhatsApp / Teléfono", "value": "+57 300 443 6649", "href": "https://wa.me/573004436649" },
+      { "icon": "📸", "label": "Instagram", "value": "@gymcobalto", "href": "https://instagram.com/gymcobalto" },
+      { "icon": "🗺️", "label": "Referencia", "value": "Vía al Colegio Departamental · Calle 3 #1-63" },
+      { "icon": "🚗", "label": "Desde Bogotá", "value": "58 km · aprox. 1h por la vía Bogotá–La Mesa" },
+      { "icon": "🌡️", "label": "Clima en Cachipay", "value": "22°C promedio · 1.600 msnm · Tierra de Ensueños" }
+    ],
+    "ctaWrite": "Escríbenos ya",
+    "ctaIG": "Ver en Instagram"
+  },
+  "story": {
+    "eyebrow": "Nuestra historia",
+    "title": "NACIMOS\nDE UN SUEÑO",
+    "quote": "\"Empecé con hierro, sudor y la convicción de que Cachipay merecía un espacio real donde transformarse.\"",
+    "quoteAuthor": "Edwin González, Fundador",
+    "paragraphs": [
+      "Gym Cobalto nació en 2020 de la visión de Edwin González, un cachipayuno que decidió que su pueblo merecía más que excusas para no entrenar.",
+      "Cinco años después, somos la comunidad fitness más activa de Cachipay. No el más grande — el más comprometido. Cada transformación que ves en nuestras redes comenzó aquí, con disciplina, constancia y el apoyo de Edwin.",
+      "Hoy seguimos creciendo: nuevas máquinas, planes de nutrición y un portal exclusivo para nuestros afiliados. Porque tu progreso nunca termina."
+    ],
+    "milestones": [
+      { "year": "2020", "label": "Fundación" },
+      { "year": "2022", "label": "Expansión" },
+      { "year": "2024", "label": "500+ afiliados" },
+      { "year": "2025", "label": "Portal digital" }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Tu momento es ahora",
+    "title": "COMIENZA\nTU TRANSFORMACIÓN",
+    "sub": "No esperes al lunes. No esperes tener el \"físico ideal\" para ir al gym.\nEl primer paso es entrar por esa puerta. <strong>$8.000 es todo lo que necesitas hoy.</strong>",
+    "primary": "Empezar ahora por WhatsApp",
+    "primaryHref": "https://wa.me/573004436649?text=Hola!%20Quiero%20comenzar%20en%20Gym%20Cobalto%20hoy",
+    "secondary": "Seguirnos en Instagram",
+    "secondaryHref": "https://www.instagram.com/gymcobalto/",
+    "bullets": [
+      "Sin contrato obligatorio",
+      "Entra desde el primer día",
+      "Entrenador incluido",
+      "#1 en Cachipay"
+    ]
+  },
+  "footer": {
+    "desc": "El gimnasio #1 de Cachipay, Cundinamarca. Musculación, entrenamiento funcional y cardio. Disciplina que transforma — desde 2020.",
+    "services": ["Musculación", "Entrenamiento Funcional", "Cardio", "Hábitos Saludables", "Planes Corporativos"],
+    "contact": [
+      "📍 Calle 3 #1-63, Cachipay",
+      "📱 +57 300 443 6649",
+      "📸 @gymcobalto",
+      "⏰ Lun–Vie 5AM–11:30AM · 4PM–10PM",
+      "⏰ Sáb 7:30AM–12M"
+    ],
+    "copyright": "© 2026 Gym Cobalto · Cachipay, Cundinamarca · Hecho con ♥ en la Tierra de Ensueños",
+    "hashtags": "#disciplina · #5AñosDeFuerza · #DeterminaciónSinLímite"
+  },
+  "portal": {
+    "login": {
+      "title": "Acceso al Portal",
+      "subtitle": "Tu espacio exclusivo de entrenamiento",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "tucorreo@email.com",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "••••••••",
+      "submitLabel": "Ingresar",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "noAccount": "¿No tienes cuenta?",
+      "contactAdmin": "Escríbele a Edwin",
+      "contactHref": "https://wa.me/573004436649?text=Hola%20Edwin!%20Quiero%20acceso%20al%20portal%20de%20Gym%20Cobalto",
+      "backToSite": "← Volver al sitio"
+    },
+    "dashboard": {
+      "welcome": "¡Bienvenido de vuelta,",
+      "subtitle": "Aquí está tu progreso esta semana",
+      "statsLabels": ["Días activos", "Semana actual", "Plan activo"],
+      "quickLinks": [
+        { "label": "Mi plan de nutrición", "href": "/portal/planes", "icon": "🥗" },
+        { "label": "Mis rutinas", "href": "/portal/rutinas", "icon": "💪" },
+        { "label": "Mi progreso", "href": "/portal/progreso", "icon": "📈" }
+      ]
+    },
+    "nav": {
+      "links": [
+        { "label": "Dashboard", "href": "/portal", "icon": "🏠" },
+        { "label": "Nutrición", "href": "/portal/planes", "icon": "🥗" },
+        { "label": "Rutinas", "href": "/portal/rutinas", "icon": "💪" },
+        { "label": "Progreso", "href": "/portal/progreso", "icon": "📈" },
+        { "label": "Mi perfil", "href": "/portal/perfil", "icon": "👤" }
+      ],
+      "logout": "Cerrar sesión",
+      "backToSite": "← Sitio público"
+    },
+    "plans": {
+      "eyebrow": "Planes de nutrición",
+      "title": "Tu alimentación,\ntransformada",
+      "lead": "Cada plan está diseñado por Edwin para maximizar tu entrenamiento. Come bien, entrena duro, transforma tu cuerpo.",
+      "empty": "Aún no tienes planes asignados. Escríbele a Edwin para que te configure tu plan personalizado.",
+      "modules": [
+        {
+          "slug": "volumen-basico",
+          "title": "Nutrición para Volumen",
+          "desc": "Aumenta masa muscular con una dieta calórica controlada y rica en proteína.",
+          "weeks": 8,
+          "level": "Intermedio",
+          "tag": "Musculación",
+          "color": "green"
+        },
+        {
+          "slug": "definicion-rapida",
+          "title": "Definición en 6 Semanas",
+          "desc": "Pierde grasa manteniendo músculo con este plan de déficit calórico inteligente.",
+          "weeks": 6,
+          "level": "Avanzado",
+          "tag": "Definición",
+          "color": "blue"
+        },
+        {
+          "slug": "inicio-saludable",
+          "title": "Inicio Saludable",
+          "desc": "El punto de partida perfecto para quienes empiezan su transformación desde cero.",
+          "weeks": 4,
+          "level": "Principiante",
+          "tag": "Bienestar",
+          "color": "orange"
+        }
+      ]
+    }
+  }
+}
