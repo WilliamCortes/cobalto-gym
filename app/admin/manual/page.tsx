@@ -20,8 +20,8 @@ function Sub({ title, children }: { title: string; children: React.ReactNode }) 
   );
 }
 
-function P({ children }: { children: React.ReactNode }) {
-  return <p style={{ fontSize: 13, color: "#8b949e", lineHeight: 1.75, marginBottom: 10 }}>{children}</p>;
+function P({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
+  return <p style={{ fontSize: 13, color: "#8b949e", lineHeight: 1.75, marginBottom: 10, ...style }}>{children}</p>;
 }
 
 function Steps({ items }: { items: string[] }) {
