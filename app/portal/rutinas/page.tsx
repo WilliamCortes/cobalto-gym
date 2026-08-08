@@ -16,7 +16,7 @@ export default async function RutinasPage() {
     .eq("active", true);
 
   const plans = (assignments ?? [])
-    .map((a) => a.content_plans as { id: string; title: string; description: string | null; type: string } | null)
+    .map((a) => (a.content_plans as unknown) as { id: string; title: string; description: string | null; type: string } | null)
     .filter(Boolean)
     .filter((p) => p!.type === "training" || p!.type === "mixto") as { id: string; title: string; description: string | null; type: string }[];
 
