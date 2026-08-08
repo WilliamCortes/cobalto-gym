@@ -56,6 +56,36 @@ export async function updateSubscriptionStatus(id: string, payment_status: strin
   revalidatePath("/admin");
 }
 
+export async function renewSubscription(formData: FormData) {
+  const { supabase } = await requireAdmin();
+  const userId = formData.get("user_id") as string;
+  const planType = (formData.get("plan_type") as string) || "mensual";
+  const amount = formData.get("amount") ? Number(formData.get("amount")) : null;
+  const paymentMethod = (formData.get("payment_method") as string) || "Efectivo";
+
+  const now = new Date();
+  const startDate = now.toISOString().split("T")[0];
+  const endDate = new Date(now);
+  switch (planType) {
+    case "semanal":     endDate.setDate(endDate.getDate() + 6); break;
+    case "quincenal":   endDate.setDate(endDate.getDate() + 14); break;
+    case "trimestral":  endDate.setMonth(endDate.getMonth() + 3); endDate.setDate(endDate.getDate() - 1); break;
+    case "semestral":   endDate.setMonth(endDate.getMonth() + 6); endDate.setDate(endDate.getDate() - 1); break;
+    case "anual":       endDate.setMonth(endDate.getMonth() + 12); endDate.setDate(endDate.getDate() - 1); break;
+    default:            endDate.setMonth(endDate.getMonth() + 1); endDate.setDate(endDate.getDate() - 1);
+  }
+
+  const { error } = await supabase.from("subscriptions").insert({
+    user_id: userId, plan_type: planType,
+    start_date: startDate, end_date: endDate.toISOString().split("T")[0],
+    amount, payment_status: "paid", payment_method: paymentMethod,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/usuarios/${userId}`);
+  revalidatePath("/admin/suscripciones");
+  revalidatePath("/admin");
+}
+
 export async function deleteSubscription(id: string, userId: string) {
   const { supabase } = await requireAdmin();
   const { error } = await supabase.from("subscriptions").delete().eq("id", id);

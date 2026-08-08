@@ -2,15 +2,14 @@ import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  updateProfile, createSubscription, deleteSubscription,
+  updateProfile, deleteSubscription, renewSubscription,
   createTask, deleteTask, toggleTask, addProgressEntry, deleteProgressEntry,
   assignPlan, removePlanAssignment,
 } from "@/lib/actions";
+import SubscriptionForm from "@/components/admin/SubscriptionForm";
 
 interface Props { params: Promise<{ id: string }> }
 
-const PLAN_TYPES = ["mensual", "quincenal", "semanal", "trimestral", "semestral", "anual", "pareja", "familiar", "semi-asistido", "personalizado"];
-const PAYMENT_METHODS = ["Nequi", "Daviplata", "Transferencia", "Efectivo"];
 const MEMBERSHIP_TYPES = ["basic", "semi-asistido", "personalizado"];
 
 const sColor = (s: string) => s === "paid" ? "#22c55e" : s === "overdue" ? "#ef4444" : "#f59e0b";
@@ -81,6 +80,32 @@ export default async function UserDetailPage({ params }: Props) {
   const today = new Date().toISOString().split("T")[0];
   const activeSub = (subscriptions ?? []).find((s) => s.end_date >= today && s.payment_status === "paid");
 
+  // ── Racha / streak ────────────────────────────────────────
+  const paidSubs = (subscriptions ?? [])
+    .filter((s) => s.payment_status === "paid")
+    .sort((a, b) => a.start_date.localeCompare(b.start_date));
+
+  const memberSince = paidSubs[0]?.start_date ?? null;
+
+  const totalDaysActive = paidSubs.reduce((sum, s) => {
+    const start = new Date(s.start_date + "T00:00:00");
+    const end = new Date(s.end_date + "T00:00:00");
+    return sum + Math.max(0, Math.round((end.getTime() - start.getTime()) / 86400000) + 1);
+  }, 0);
+
+  let streakMonths = 0;
+  const todayMs = new Date(today + "T00:00:00").getTime();
+  for (let i = paidSubs.length - 1; i >= 0; i--) {
+    const subEnd = new Date(paidSubs[i].end_date + "T00:00:00").getTime();
+    if (i === paidSubs.length - 1) {
+      if (subEnd >= todayMs) { streakMonths = 1; } else { break; }
+    } else {
+      const nextStart = new Date(paidSubs[i + 1].start_date + "T00:00:00").getTime();
+      const gapDays = Math.round((nextStart - subEnd) / 86400000);
+      if (gapDays <= 2) { streakMonths++; } else { break; }
+    }
+  }
+
   const submitUpdateProfile = updateProfile.bind(null, id);
 
   return (
@@ -109,6 +134,23 @@ export default async function UserDetailPage({ params }: Props) {
           </span>
         )}
       </div>
+
+      {/* Racha stats */}
+      {paidSubs.length > 0 && (
+        <div style={{ display: "flex", gap: 12, marginBottom: 24, flexWrap: "wrap" }}>
+          {[
+            { label: "Miembro desde", value: memberSince ?? "—", icon: "📅", color: "#3b82f6" },
+            { label: "Días activos", value: `${totalDaysActive} días`, icon: "⏱", color: "#a855f7" },
+            { label: "Racha actual", value: streakMonths > 0 ? `${streakMonths} ${streakMonths === 1 ? "mes" : "meses"} 🔥` : "Inactivo", icon: "🔥", color: streakMonths > 0 ? "#f59e0b" : "#ef4444" },
+            { label: "Total pagos", value: `${paidSubs.length}`, icon: "💳", color: "#22c55e" },
+          ].map((stat) => (
+            <div key={stat.label} style={{ flex: "1 1 140px", background: "#0d1117", borderRadius: 10, border: `1px solid ${stat.color}25`, padding: "12px 16px" }}>
+              <div style={{ fontSize: 11, color: "#8b949e", marginBottom: 4, letterSpacing: 0.5 }}>{stat.label}</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: stat.color, fontFamily: "var(--font-display)", letterSpacing: 0.5 }}>{stat.value}</div>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
         {/* Left column */}
@@ -182,44 +224,53 @@ export default async function UserDetailPage({ params }: Props) {
         <div>
           {/* Subscription */}
           <Section title="Suscripción">
-            <form action={createSubscription}>
-              <input type="hidden" name="user_id" value={id} />
-              <div style={{ display: "grid", gap: 12 }}>
-                <Select label="Tipo de plan" name="plan_type" options={PLAN_TYPES.map((p) => ({ value: p, label: p }))} />
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-                  <Input label="Inicio" name="start_date" type="date" defaultValue={today} required />
-                  <Input label="Fin" name="end_date" type="date" required />
-                </div>
-                <Input label="Monto (COP)" name="amount" type="number" defaultValue="70000" required />
-                <Select label="Estado de pago" name="payment_status" options={[
-                  { value: "paid", label: "Pagado" }, { value: "pending", label: "Pendiente" }, { value: "overdue", label: "Vencido" }
-                ]} />
-                <Select label="Método de pago" name="payment_method" options={PAYMENT_METHODS.map((m) => ({ value: m, label: m }))} />
-                <Input label="Notas" name="notes" />
-                <button type="submit" style={{ padding: "10px", background: "#22c55e", color: "#000", borderRadius: 8, border: "none", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
-                  + Registrar Suscripción
-                </button>
-              </div>
-            </form>
+            <SubscriptionForm userId={id} today={today} />
 
             {(subscriptions ?? []).length > 0 && (
               <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 6 }}>
-                {(subscriptions ?? []).map((s) => (
-                  <div key={s.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 12px", background: "#161b22", borderRadius: 8 }}>
-                    <div>
-                      <div style={{ fontSize: 12, color: "#f0f6fc", fontWeight: 600 }}>{s.plan_type}</div>
-                      <div style={{ fontSize: 11, color: "#8b949e" }}>{s.start_date} → {s.end_date}</div>
+                {(subscriptions ?? []).map((s) => {
+                  const isActive = s.end_date >= today && s.payment_status === "paid";
+                  const isExpired = s.end_date < today;
+                  return (
+                    <div key={s.id} style={{ padding: "10px 12px", background: "#161b22", borderRadius: 8, border: isActive ? "1px solid rgba(34,197,94,.2)" : "1px solid transparent" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <div>
+                          <div style={{ fontSize: 12, color: "#f0f6fc", fontWeight: 600 }}>{s.plan_type}</div>
+                          <div style={{ fontSize: 11, color: "#8b949e" }}>{s.start_date} → {s.end_date}</div>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                          <span style={{ padding: "2px 8px", borderRadius: 999, fontSize: 10, fontWeight: 700, background: `${sColor(s.payment_status)}18`, color: sColor(s.payment_status), border: `1px solid ${sColor(s.payment_status)}40` }}>
+                            {sLabel(s.payment_status)}
+                          </span>
+                          {(isExpired || s.payment_status !== "paid") && (
+                            <form action={renewSubscription}>
+                              <input type="hidden" name="user_id" value={id} />
+                              <input type="hidden" name="plan_type" value={s.plan_type} />
+                              <input type="hidden" name="amount" value={s.amount ?? 70000} />
+                              <input type="hidden" name="payment_method" value={s.payment_method || "Efectivo"} />
+                              <button type="submit" style={{ padding: "2px 8px", borderRadius: 6, fontSize: 10, fontWeight: 700, cursor: "pointer", background: "rgba(34,197,94,.15)", color: "#22c55e", border: "1px solid rgba(34,197,94,.3)" }}>
+                                🔄 Renovar
+                              </button>
+                            </form>
+                          )}
+                          <form action={deleteSubscription.bind(null, s.id, id)}>
+                            <button type="submit" style={{ background: "none", border: "none", color: "#ef4444", cursor: "pointer", fontSize: 14 }}>×</button>
+                          </form>
+                        </div>
+                      </div>
+                      {isActive && (
+                        <div style={{ marginTop: 4, fontSize: 10, color: "#22c55e" }}>
+                          ✓ Activa · vence en {Math.round((new Date(s.end_date).getTime() - new Date(today).getTime()) / 86400000)} días
+                        </div>
+                      )}
+                      {isExpired && (
+                        <div style={{ marginTop: 4, fontSize: 10, color: "#ef4444" }}>
+                          ✗ Venció hace {Math.round((new Date(today).getTime() - new Date(s.end_date).getTime()) / 86400000)} días
+                        </div>
+                      )}
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span style={{ padding: "2px 8px", borderRadius: 999, fontSize: 10, fontWeight: 700, background: `${sColor(s.payment_status)}18`, color: sColor(s.payment_status), border: `1px solid ${sColor(s.payment_status)}40` }}>
-                        {sLabel(s.payment_status)}
-                      </span>
-                      <form action={deleteSubscription.bind(null, s.id, id)}>
-                        <button type="submit" style={{ background: "none", border: "none", color: "#ef4444", cursor: "pointer", fontSize: 14 }}>×</button>
-                      </form>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </Section>
