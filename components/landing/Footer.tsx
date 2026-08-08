@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "var(--color-ink2)", borderTop: "1px solid rgba(255,255,255,.06)", padding: "64px 0 32px" }}>
       <div style={{ maxWidth: 1140, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, marginBottom: 48 }} className="footer-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 48 }} className="footer-grid">
           {/* Brand */}
           <div>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", marginBottom: 20 }}>
@@ -57,6 +57,25 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Blog */}
+          <div>
+            <h4 style={{ fontFamily: "var(--font-display)", fontSize: 18, letterSpacing: 1, marginBottom: 20, color: "var(--color-snow)" }}>Blog</h4>
+            <ul style={{ listStyle: "none" }}>
+              <li style={{ padding: "5px 0" }}>
+                <Link href="/blog" style={{ fontSize: 14, color: "var(--color-mist)", textDecoration: "none" }}>Todos los artículos</Link>
+              </li>
+              <li style={{ padding: "5px 0" }}>
+                <Link href="/blog/beneficios-del-gimnasio" style={{ fontSize: 14, color: "var(--color-mist)", textDecoration: "none" }}>Beneficios del gym</Link>
+              </li>
+              <li style={{ padding: "5px 0" }}>
+                <Link href="/blog/hiit-quema-grasa-en-menos-tiempo" style={{ fontSize: 14, color: "var(--color-mist)", textDecoration: "none" }}>HIIT y quema de grasa</Link>
+              </li>
+              <li style={{ padding: "5px 0" }}>
+                <Link href="/blog/como-ganar-musculo-siendo-principiante" style={{ fontSize: 14, color: "var(--color-mist)", textDecoration: "none" }}>Ganar músculo</Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Contact */}
           <div>
             <h4 style={{ fontFamily: "var(--font-display)", fontSize: 18, letterSpacing: 1, marginBottom: 20, color: "var(--color-snow)" }}>Contacto</h4>
@@ -74,7 +93,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <style>{`@media(max-width:900px){.footer-grid{grid-template-columns:1fr!important;gap:32px!important;}}`}</style>
+      <style>{`@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr!important;gap:32px!important;}}@media(max-width:600px){.footer-grid{grid-template-columns:1fr!important;}}`}</style>
     </footer>
   );
 }

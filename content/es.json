@@ -37,7 +37,8 @@
       { "label": "Planes", "href": "#planes" },
       { "label": "Horarios", "href": "#horarios" },
       { "label": "Nosotros", "href": "#nosotros" },
-      { "label": "Ubicación", "href": "#ubicacion" }
+      { "label": "Ubicación", "href": "#ubicacion" },
+      { "label": "Blog", "href": "/blog" }
     ],
     "cta": "¡Empieza hoy!",
     "ctaHref": "https://wa.me/573004436649?text=Hola!%20Quiero%20info%20de%20Gym%20Cobalto",
