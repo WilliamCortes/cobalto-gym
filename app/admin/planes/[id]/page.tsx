@@ -1,7 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import { revalidatePath } from "next/cache";
 import { updatePlan, createModule, updateModule, deleteModule } from "@/lib/actions";
 
 interface Props { params: Promise<{ id: string }> }
@@ -51,13 +50,13 @@ export default async function PlanEditorPage({ params }: Props) {
     await createModule({
       plan_id: formData.get("plan_id") as string,
       week_number: Number(formData.get("week_number") ?? 1),
-      day_name: formData.get("day_name") as string,
+      day_name: (formData.get("day_name") as string) || null,
       title: formData.get("title") as string,
-      content: formData.get("content") as string,
-      video_url: formData.get("video_url") as string,
+      content: (formData.get("content") as string) || null,
+      video_url: (formData.get("video_url") as string) || null,
       sort_order: Number(formData.get("sort_order") ?? 0),
     });
-    revalidatePath(`/admin/planes/${id}`);
+    redirect(`/admin/planes/${id}`);
   }
 
   async function handleUpdateModule(formData: FormData) {

@@ -56,7 +56,7 @@ export default async function PlanesPage() {
                       Editar
                     </Link>
                     <form action={deletePlan.bind(null, plan.id)}>
-                      <button type="submit" onClick={() => {}} style={{ padding: "7px 12px", background: "rgba(239,68,68,.12)", color: "#ef4444", border: "1px solid rgba(239,68,68,.3)", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
+                      <button type="submit" style={{ padding: "7px 12px", background: "rgba(239,68,68,.12)", color: "#ef4444", border: "1px solid rgba(239,68,68,.3)", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
                         Eliminar
                       </button>
                     </form>

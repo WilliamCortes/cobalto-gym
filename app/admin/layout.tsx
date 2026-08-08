@@ -26,7 +26,10 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         {children}
       </main>
       <style>{`
-        @media(max-width:900px){.admin-main{margin-left:0!important;padding:20px 16px!important;}}
+        @media(max-width:900px){
+          .admin-sidebar{display:none!important;}
+          .admin-main{margin-left:0!important;padding:20px 16px!important;}
+        }
       `}</style>
     </div>
   );

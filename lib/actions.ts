@@ -15,10 +15,10 @@ async function requireAdmin() {
 export async function updateProfile(userId: string, formData: FormData) {
   const { supabase } = await requireAdmin();
   const data = {
-    full_name: formData.get("full_name") as string || undefined,
-    phone: formData.get("phone") as string || undefined,
-    membership_type: formData.get("membership_type") as string || undefined,
-    notes: formData.get("notes") as string || undefined,
+    full_name: (formData.get("full_name") as string) || null,
+    phone: (formData.get("phone") as string) || null,
+    membership_type: (formData.get("membership_type") as string) || null,
+    notes: (formData.get("notes") as string) || null,
     active: formData.get("active") === "true",
   };
   const { error } = await supabase.from("profiles").update(data).eq("id", userId);
@@ -97,8 +97,8 @@ export async function deletePlan(id: string) {
 
 // ── Plan Modules ──────────────────────────────────────────
 export async function createModule(data: {
-  plan_id: string; week_number: number; day_name: string;
-  title: string; content: string; video_url: string; sort_order: number;
+  plan_id: string; week_number: number; day_name: string | null;
+  title: string; content: string | null; video_url: string | null; sort_order: number;
 }) {
   const { supabase } = await requireAdmin();
   const { error } = await supabase.from("plan_modules").insert(data);

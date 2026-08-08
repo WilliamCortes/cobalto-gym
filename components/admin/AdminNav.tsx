@@ -23,7 +23,7 @@ export default function AdminNav({ adminName }: { adminName: string }) {
   }
 
   return (
-    <aside style={{
+    <aside className="admin-sidebar" style={{
       position: "fixed", top: 0, left: 0, bottom: 0, width: 240,
       background: "#0d1117",
       borderRight: "1px solid rgba(255,255,255,.07)",
