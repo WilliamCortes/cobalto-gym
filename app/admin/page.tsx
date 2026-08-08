@@ -39,9 +39,15 @@ export default async function AdminDashboard() {
     supabase.from("content_plans").select("*", { count: "exact", head: true }),
     supabase.from("profiles").select("id, full_name, email, active, created_at")
       .order("created_at", { ascending: false }).limit(5),
-    supabase.from("subscriptions").select("id, user_id, plan_type, end_date, payment_status, profiles(full_name, email)")
+    supabase.from("subscriptions").select("id, user_id, plan_type, end_date, payment_status")
       .order("created_at", { ascending: false }).limit(5),
   ]);
+
+  const recentSubUserIds = [...new Set((recentSubs ?? []).map((s) => s.user_id))];
+  const { data: recentSubProfiles } = recentSubUserIds.length > 0
+    ? await supabase.from("profiles").select("id, full_name, email").in("id", recentSubUserIds)
+    : { data: [] as { id: string; full_name: string | null; email: string | null }[] };
+  const subProfileMap = Object.fromEntries((recentSubProfiles ?? []).map((p) => [p.id, p]));
 
   const statusColor = (s: string) => s === "paid" ? "#22c55e" : s === "overdue" ? "#ef4444" : "#f59e0b";
   const statusLabel = (s: string) => s === "paid" ? "Pagado" : s === "overdue" ? "Vencido" : "Pendiente";
@@ -107,7 +113,7 @@ export default async function AdminDashboard() {
           </div>
           <div>
             {(recentSubs ?? []).map((s) => {
-              const profile = s.profiles as unknown as { full_name: string | null; email: string | null } | null;
+              const profile = subProfileMap[s.user_id] ?? null;
               return (
                 <Link key={s.id} href={`/admin/usuarios/${s.user_id}`} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 20px", borderBottom: "1px solid rgba(255,255,255,.04)", textDecoration: "none" }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
