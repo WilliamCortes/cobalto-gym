@@ -46,6 +46,7 @@ export default function BlogPage() {
           Artículos sobre fitness, fuerza y mentalidad escritos por Edwin González — coach certificado con más de 5 años en Cachipay.
         </p>
 
+        <style>{`.blog-card{background:#161b22;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 32px;transition:border-color .2s;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}.blog-card:hover{border-color:rgba(22,163,74,.4)}`}</style>
         <div style={{ display: "grid", gap: 24 }}>
           {posts.map((post) => (
             <Link
@@ -53,15 +54,7 @@ export default function BlogPage() {
               href={`/blog/${post.slug}`}
               style={{ textDecoration: "none" }}
             >
-              <article style={{
-                background: "#161b22", border: "1px solid rgba(255,255,255,.08)",
-                borderRadius: 16, padding: "28px 32px",
-                transition: "border-color .2s",
-                display: "grid", gridTemplateColumns: "1fr auto", gap: 16, alignItems: "start",
-              }}
-                onMouseOver={(e) => (e.currentTarget.style.borderColor = "rgba(22,163,74,.4)")}
-                onMouseOut={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,.08)")}
-              >
+              <article className="blog-card">
                 <div>
                   <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 12, flexWrap: "wrap" }}>
                     <span style={{
@@ -90,6 +83,7 @@ export default function BlogPage() {
               </article>
             </Link>
           ))}
+
         </div>
       </div>
 
