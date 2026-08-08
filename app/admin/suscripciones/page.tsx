@@ -133,7 +133,7 @@ export default async function SuscripcionesPage({ searchParams }: { searchParams
                       {s.payment_status !== "overdue" && (
                         <form action={updateSubscriptionStatus.bind(null, s.id, "overdue")}>
                           <button type="submit" style={{ padding: "5px 10px", background: "rgba(239,68,68,.1)", color: "#ef4444", border: "1px solid rgba(239,68,68,.25)", borderRadius: 6, fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
-                            Vencido
+                            Marcar vencido
                           </button>
                         </form>
                       )}
