@@ -28,6 +28,23 @@
   --radius-lg: 20px;
 }
 
+/* ── Skip-to-content link (accessibility) ── */
+.skip-to-content {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  z-index: 9999;
+  background: var(--color-cobalt);
+  color: #fff;
+  padding: 12px 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
 /* ── Global reset ──────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 

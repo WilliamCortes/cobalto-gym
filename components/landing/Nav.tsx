@@ -92,6 +92,7 @@ export default function Nav() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menú"
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           style={{ display: "none", flexDirection: "column", gap: 5, cursor: "pointer", background: "none", border: "none", padding: 4 }}
         >
           {[0, 1, 2].map((i) => (
@@ -102,12 +103,15 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div style={{
-          position: "absolute", top: "100%", left: 0, right: 0,
-          background: "rgba(8,12,18,.98)", padding: 24,
-          borderBottom: "1px solid rgba(255,255,255,.07)",
-          display: "flex", flexDirection: "column", gap: 20,
-        }}>
+        <div
+          id="mobile-menu"
+          style={{
+            position: "absolute", top: "100%", left: 0, right: 0,
+            background: "rgba(8,12,18,.98)", padding: 24,
+            borderBottom: "1px solid rgba(255,255,255,.07)",
+            display: "flex", flexDirection: "column", gap: 20,
+          }}
+        >
           {t.nav.links.map((l) => (
             <a
               key={l.href}

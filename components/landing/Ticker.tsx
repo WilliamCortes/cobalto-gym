@@ -4,8 +4,9 @@ export default function Ticker() {
   const items = [...t.ticker.items, ...t.ticker.items];
   return (
     <div
-      role="marquee"
+      role="region"
       aria-label="Servicios Gym Cobalto"
+      aria-live="off"
       style={{
         background: "var(--color-cobalt-deep)",
         borderTop: "1px solid rgba(255,255,255,.06)",

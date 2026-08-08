@@ -15,8 +15,11 @@ import WaFloat from "@/components/landing/WaFloat";
 export default function Home() {
   return (
     <>
+      <a href="#main-content" className="skip-to-content">
+        Ir al contenido principal
+      </a>
       <Nav />
-      <main>
+      <main id="main-content">
         <Hero />
         <Ticker />
         <Services />
