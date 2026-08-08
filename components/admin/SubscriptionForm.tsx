@@ -1,35 +1,10 @@
 "use client";
 import { useState, useEffect, type CSSProperties } from "react";
 import { createSubscription } from "@/lib/actions";
+import { calcEndDate } from "@/lib/dates";
 
 const PLAN_TYPES = ["mensual", "quincenal", "semanal", "trimestral", "semestral", "anual", "pareja", "familiar", "semi-asistido", "personalizado"];
 const PAYMENT_METHODS = ["Nequi", "Daviplata", "Transferencia", "Efectivo"];
-
-const PLAN_DURATIONS: Record<string, { months?: number; days?: number }> = {
-  semanal:       { days: 6 },
-  quincenal:     { days: 14 },
-  mensual:       { months: 1 },
-  pareja:        { months: 1 },
-  familiar:      { months: 1 },
-  "semi-asistido": { months: 1 },
-  trimestral:    { months: 3 },
-  semestral:     { months: 6 },
-  anual:         { months: 12 },
-};
-
-function calcEndDate(start: string, planType: string): string {
-  if (!start) return "";
-  const dur = PLAN_DURATIONS[planType];
-  if (!dur) return "";
-  const d = new Date(start + "T12:00:00");
-  if (dur.days !== undefined) {
-    d.setDate(d.getDate() + dur.days);
-  } else if (dur.months !== undefined) {
-    d.setMonth(d.getMonth() + dur.months);
-    d.setDate(d.getDate() - 1);
-  }
-  return d.toISOString().split("T")[0];
-}
 
 const input: CSSProperties = {
   width: "100%", padding: "10px 12px", background: "#161b22",

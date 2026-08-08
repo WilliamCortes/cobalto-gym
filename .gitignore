@@ -4,3 +4,9 @@ node_modules/
 .env*.local
 gym-cobalto-next/node_modules/
 gym-cobalto-next/.next/
+.vercel
+# Playwright auth state (contiene cookies de sesión)
+tests/.auth/*.json
+# Playwright report
+playwright-report/
+test-results/

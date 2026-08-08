@@ -6,7 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:public": "playwright test --project=public",
+    "test:e2e:portal": "playwright test --project=portal",
+    "test:e2e:admin": "playwright test --project=admin",
+    "test:all": "vitest run && playwright test --project=public"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
@@ -16,6 +23,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "^4.1.7",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -23,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "^15.3.5",
     "tailwindcss": "^4.1.7",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.7"
   }
 }
