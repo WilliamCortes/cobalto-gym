@@ -129,7 +129,7 @@ export default function ManualPage() {
         <Sub title="Cómo entrar al panel">
           <P>Ve a <strong style={{ color: "#f0f6fc" }}>cobalto-gym.vercel.app/login</strong> e inicia sesión con tu correo y contraseña de administrador.</P>
           <Steps items={[
-            'Ingresa tu correo registrado en Supabase.',
+            'Ingresa tu correo de administrador.',
             'Escribe tu contraseña.',
             'Haz clic en <strong>Iniciar sesión</strong> — serás redirigido automáticamente a <code style="background:#161b22;padding:2px 6px;border-radius:4px;">/admin</code>.',
           ]} />
@@ -163,14 +163,14 @@ export default function ManualPage() {
       {/* ── 3. Usuarios ───────────────────────────────────────── */}
       <Section id="usuarios" title="03 · Gestión de usuarios">
         <Sub title="Crear un usuario nuevo">
-          <P>Los usuarios se crean desde <strong style={{ color: "#f0f6fc" }}>Supabase</strong>, no desde el panel directamente. Esto es para garantizar que tengan contraseña y puedan iniciar sesión.</P>
+          <P>Los usuarios se crean directamente desde el panel, en <strong style={{ color: "#f0f6fc" }}>Usuarios → + Nuevo Usuario</strong>.</P>
           <Steps items={[
-            'Haz clic en el botón verde <strong>+ Nuevo Usuario ↗</strong> en la esquina superior derecha de la lista de usuarios.',
-            'Se abre el dashboard de Supabase. En la sección <strong>Authentication → Users</strong>, haz clic en <strong>Invite user</strong> o <strong>Add user</strong>.',
-            'Ingresa el correo y una contraseña temporal. El sistema crea automáticamente el perfil del usuario.',
-            'Vuelve al panel, busca al usuario en la lista y completa sus datos (nombre, teléfono, membresía).',
+            'Ve a <strong>Usuarios</strong> y haz clic en el botón verde <strong>+ Nuevo Usuario</strong>.',
+            'Completa nombre, correo, contraseña temporal, teléfono y tipo de membresía.',
+            'Haz clic en <strong>Crear usuario</strong>. El cliente aparece en la lista de inmediato.',
+            'Comparte el correo y la contraseña temporal con el cliente para que pueda ingresar al portal.',
           ]} />
-          <Warn>El campo <strong>email</strong> lo controla Supabase — no se puede cambiar desde el panel admin. Solo se puede cambiar nombre, teléfono, notas y tipo de membresía.</Warn>
+          <Warn>El correo electrónico no se puede cambiar una vez creado el usuario. Verifica que esté correcto antes de guardar.</Warn>
         </Sub>
 
         <Sub title="Editar perfil de un usuario">
@@ -337,10 +337,10 @@ export default function ManualPage() {
         </Limit>
         <Sub title="Cómo darle acceso al cliente">
           <Steps items={[
-            'Crea el usuario en Supabase (ver sección 03).',
+            'Crea el usuario desde <strong>Usuarios → + Nuevo Usuario</strong> (ver sección 03).',
             'Asegúrate de que el perfil tenga <strong>Acceso activo</strong> marcado.',
-            'Comparte las credenciales (correo + contraseña temporal) con el cliente.',
-            'El cliente ingresa en <strong>cobalto-gym.vercel.app/login</strong> y cambia su contraseña.',
+            'Comparte el correo y la contraseña temporal con el cliente.',
+            'El cliente ingresa en <strong>cobalto-gym.vercel.app/login</strong> con esas credenciales.',
           ]} />
         </Sub>
         <Sub title="Revocar acceso">
@@ -352,8 +352,8 @@ export default function ManualPage() {
       <Section id="flujos" title="07 · Flujos de trabajo recomendados">
         <Sub title="Dar de alta a un nuevo cliente">
           <Steps items={[
-            'Crear cuenta en Supabase (Authentication → Users → Invite).',
-            'Completar perfil en el panel: nombre, teléfono, tipo de membresía.',
+            'Crear cuenta desde <strong>Usuarios → + Nuevo Usuario</strong> con nombre, correo y contraseña temporal.',
+            'Completar perfil: teléfono, tipo de membresía.',
             'Registrar suscripción con fechas y monto.',
             'Asignar plan de nutrición o entrenamiento si ya existe.',
             'Añadir tareas iniciales si el cliente tiene compromisos.',
@@ -399,12 +399,8 @@ export default function ManualPage() {
               body: "Los clientes ven una lista de planes genérica, no los planes específicamente asignados desde el panel. Funcionalidad pendiente.",
             },
             {
-              title: "No se puede crear usuarios desde el panel",
-              body: "La creación de cuentas requiere acceso al dashboard de Supabase. Esto es por seguridad (manejo de contraseñas).",
-            },
-            {
               title: "No se puede cambiar el email de un usuario",
-              body: "El correo electrónico lo gestiona Supabase exclusivamente. Requiere acceso al dashboard de Supabase para cambiarlo.",
+              body: "El correo electrónico no se puede modificar una vez creado el usuario. Si el cliente cambió su correo, hay que crear una cuenta nueva.",
             },
             {
               title: "No hay historial de cambios (audit log)",

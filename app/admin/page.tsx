@@ -146,13 +146,9 @@ export default async function AdminDashboard() {
         <Link href="/admin/planes" style={{ padding: "10px 20px", background: "rgba(168,85,247,.15)", color: "#c084fc", border: "1px solid rgba(168,85,247,.3)", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 700 }}>
           + Crear Plan
         </Link>
-        <a
-          href="https://supabase.com/dashboard/project/bowtvdvkrmiljnqcyxnr/auth/users"
-          target="_blank" rel="noopener noreferrer"
-          style={{ padding: "10px 20px", background: "rgba(255,255,255,.05)", color: "#8b949e", border: "1px solid rgba(255,255,255,.1)", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 600 }}
-        >
-          🔑 Crear usuario (Supabase) ↗
-        </a>
+        <Link href="/admin/usuarios" style={{ padding: "10px 20px", background: "rgba(255,255,255,.05)", color: "#8b949e", border: "1px solid rgba(255,255,255,.1)", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 600 }}>
+          👤 Nuevo usuario
+        </Link>
       </div>
     </div>
   );

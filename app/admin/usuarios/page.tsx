@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
+import CreateUserForm from "@/components/admin/CreateUserForm";
 
 export default async function UsuariosPage() {
   const supabase = await createClient();
@@ -37,13 +38,7 @@ export default async function UsuariosPage() {
           <h1 style={{ fontFamily: "var(--font-display)", fontSize: 28, letterSpacing: 2, color: "#f0f6fc", marginBottom: 4 }}>USUARIOS</h1>
           <p style={{ fontSize: 13, color: "#8b949e" }}>{users?.length ?? 0} usuarios registrados</p>
         </div>
-        <a
-          href="https://supabase.com/dashboard/project/bowtvdvkrmiljnqcyxnr/auth/users"
-          target="_blank" rel="noopener noreferrer"
-          style={{ padding: "10px 18px", background: "#22c55e", color: "#000", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 700 }}
-        >
-          + Nuevo Usuario ↗
-        </a>
+        <CreateUserForm />
       </div>
 
       <div style={{ background: "#0d1117", borderRadius: 12, border: "1px solid rgba(255,255,255,.07)", overflow: "hidden" }}>
@@ -104,7 +99,7 @@ export default async function UsuariosPage() {
             {!users?.length && (
               <tr>
                 <td colSpan={7} style={{ padding: 40, textAlign: "center", fontSize: 14, color: "#8b949e" }}>
-                  No hay usuarios. <a href="https://supabase.com/dashboard/project/bowtvdvkrmiljnqcyxnr/auth/users" target="_blank" rel="noopener noreferrer" style={{ color: "#22c55e" }}>Crear uno en Supabase ↗</a>
+                  No hay usuarios registrados aún.
                 </td>
               </tr>
             )}

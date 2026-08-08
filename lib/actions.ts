@@ -1,6 +1,7 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 async function requireAdmin() {
   const supabase = await createClient();
@@ -227,4 +228,38 @@ export async function deleteProgressEntry(id: string, userId: string) {
   const { error } = await supabase.from("progress_entries").delete().eq("id", id);
   if (error) throw new Error(error.message);
   revalidatePath(`/admin/usuarios/${userId}`);
+}
+
+// ── Create user (admin only) ──────────────────────────────
+export async function createUser(formData: FormData) {
+  await requireAdmin();
+  const admin = createAdminClient();
+
+  const email = (formData.get("email") as string).trim().toLowerCase();
+  const password = formData.get("password") as string;
+  const fullName = (formData.get("full_name") as string).trim();
+  const phone = (formData.get("phone") as string | null)?.trim() || null;
+  const membershipType = (formData.get("membership_type") as string) || "basic";
+
+  const { data, error } = await admin.auth.admin.createUser({
+    email,
+    password,
+    email_confirm: true,
+    user_metadata: { full_name: fullName },
+  });
+  if (error) throw new Error(error.message);
+
+  if (data.user) {
+    await admin.from("profiles").upsert({
+      id: data.user.id,
+      email,
+      full_name: fullName,
+      phone,
+      membership_type: membershipType,
+      role: "member",
+    });
+  }
+
+  revalidatePath("/admin/usuarios");
+  revalidatePath("/admin");
 }
