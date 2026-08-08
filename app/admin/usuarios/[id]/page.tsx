@@ -28,12 +28,12 @@ function Section({ title, children, action }: { title: string; children: React.R
   );
 }
 
-function Input({ label, name, defaultValue, type = "text", required }: { label: string; name: string; defaultValue?: string | null; type?: string; required?: boolean }) {
+function Input({ label, name, defaultValue, type = "text", required, step }: { label: string; name: string; defaultValue?: string | null; type?: string; required?: boolean; step?: string }) {
   return (
     <div>
       <label style={{ display: "block", fontSize: 11, fontWeight: 600, color: "#8b949e", letterSpacing: 0.5, marginBottom: 6, textTransform: "uppercase" }}>{label}</label>
       <input
-        name={name} type={type} defaultValue={defaultValue ?? ""} required={required}
+        name={name} type={type} defaultValue={defaultValue ?? ""} required={required} step={step}
         style={{ width: "100%", padding: "10px 12px", background: "#161b22", border: "1px solid rgba(255,255,255,.1)", borderRadius: 8, color: "#f0f6fc", fontSize: 13, outline: "none" }}
       />
     </div>
@@ -143,10 +143,10 @@ export default async function UserDetailPage({ params }: Props) {
             <form action={addProgressEntry}>
               <input type="hidden" name="user_id" value={id} />
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
-                <Input label="Peso (kg)" name="weight_kg" type="number" />
-                <Input label="Cintura (cm)" name="waist_cm" type="number" />
-                <Input label="Cadera (cm)" name="hip_cm" type="number" />
-                <Input label="Pecho (cm)" name="chest_cm" type="number" />
+                <Input label="Peso (kg)" name="weight_kg" type="number" step="0.1" />
+                <Input label="Cintura (cm)" name="waist_cm" type="number" step="0.1" />
+                <Input label="Cadera (cm)" name="hip_cm" type="number" step="0.1" />
+                <Input label="Pecho (cm)" name="chest_cm" type="number" step="0.1" />
               </div>
               <Input label="Fecha" name="recorded_at" type="date" defaultValue={today} />
               <div style={{ marginTop: 10 }}>
