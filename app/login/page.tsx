@@ -10,7 +10,8 @@ import { Suspense } from "react";
 function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
-  const next = params.get("next") ?? "/portal";
+  const rawNext = params.get("next") ?? "/portal";
+  const next = /^\/(?!\/)/.test(rawNext) ? rawNext : "/portal";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -29,7 +30,7 @@ function LoginForm() {
       setLoading(false);
       return;
     }
-    router.push(next);
+    router.push(next.startsWith("/") ? next : "/portal");
     router.refresh();
   }
 

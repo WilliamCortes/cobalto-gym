@@ -35,7 +35,7 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser();
 
-  if (pathname.startsWith("/portal") && !user) {
+  if ((pathname.startsWith("/portal") || pathname.startsWith("/admin")) && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.searchParams.set("next", pathname);
@@ -52,5 +52,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/portal/:path*", "/login"],
+  matcher: ["/portal/:path*", "/admin/:path*", "/login"],
 };
