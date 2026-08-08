@@ -1,3 +1,4 @@
+"use client";
 import { t } from "@/lib/content";
 
 export default function CtaSection() {

@@ -48,14 +48,13 @@ export default async function PortalDashboard() {
           <Link
             key={ql.href}
             href={ql.href}
+            className="quick-link"
             style={{
               display: "flex", alignItems: "center", gap: 16,
               background: "var(--color-ink3)", borderRadius: 16,
               padding: "24px", border: "1px solid rgba(255,255,255,.07)",
               textDecoration: "none", transition: "all .2s",
             }}
-            onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = "rgba(22,163,74,.4)"; e.currentTarget.style.background = "var(--color-ink2)"; }}
-            onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = "rgba(255,255,255,.07)"; e.currentTarget.style.background = "var(--color-ink3)"; }}
           >
             <div style={{
               width: 48, height: 48, borderRadius: 12,
@@ -101,7 +100,10 @@ export default async function PortalDashboard() {
         </div>
       </div>
 
-      <style>{`@media(max-width:700px){.stats-grid{grid-template-columns:1fr!important;}}`}</style>
+      <style>{`
+        @media(max-width:700px){.stats-grid{grid-template-columns:1fr!important;}}
+        .quick-link:hover{border-color:rgba(22,163,74,.4)!important;background:var(--color-ink2)!important;}
+      `}</style>
     </div>
   );
 }

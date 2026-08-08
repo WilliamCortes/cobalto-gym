@@ -1,3 +1,4 @@
+"use client";
 import { t } from "@/lib/content";
 
 const WA_BASE = "https://wa.me/573004436649?text=Hola!%20";
