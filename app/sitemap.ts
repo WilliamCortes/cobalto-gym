@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { t } from "@/lib/content";
 import { CIUDADES_CERCANAS } from "@/lib/seo-locations";
+import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = t.meta.siteUrl;
@@ -23,5 +24,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticRoutes, ...locationRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = [
+    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+    ...getAllPosts().map((post) => ({
+      url: `${base}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+  ];
+
+  return [...staticRoutes, ...locationRoutes, ...blogRoutes];
 }
