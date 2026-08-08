@@ -7,12 +7,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: base,                    lastModified: now, changeFrequency: "weekly",  priority: 1    },
-    { url: `${base}/#servicios`,    lastModified: now, changeFrequency: "monthly", priority: 0.8  },
-    { url: `${base}/#planes`,       lastModified: now, changeFrequency: "weekly",  priority: 0.9  },
-    { url: `${base}/#horarios`,     lastModified: now, changeFrequency: "weekly",  priority: 0.8  },
-    { url: `${base}/#nosotros`,     lastModified: now, changeFrequency: "monthly", priority: 0.7  },
-    { url: `${base}/#ubicacion`,    lastModified: now, changeFrequency: "monthly", priority: 0.8  },
+    { url: base,                                  lastModified: now, changeFrequency: "weekly",  priority: 1    },
+    { url: `${base}/gimnasio-en-cachipay`,        lastModified: now, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${base}/#servicios`,                  lastModified: now, changeFrequency: "monthly", priority: 0.8  },
+    { url: `${base}/#planes`,                     lastModified: now, changeFrequency: "weekly",  priority: 0.9  },
+    { url: `${base}/#horarios`,                   lastModified: now, changeFrequency: "weekly",  priority: 0.8  },
+    { url: `${base}/#nosotros`,                   lastModified: now, changeFrequency: "monthly", priority: 0.7  },
+    { url: `${base}/#ubicacion`,                  lastModified: now, changeFrequency: "monthly", priority: 0.8  },
   ];
 
   const locationRoutes: MetadataRoute.Sitemap = CIUDADES_CERCANAS.map((c) => ({
