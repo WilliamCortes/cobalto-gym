@@ -6,7 +6,7 @@ author: "Edwin González"
 authorTitle: "Coach & CEO, Gym Cobalto Cachipay"
 category: "Nutrición y pérdida de grasa"
 keywords: "cardio vs pesas perder grasa, cardio o pesas bajar de peso, pérdida de grasa gym Cachipay, entrenamiento mixto, quemar grasa Cundinamarca"
-image: "https://images.unsplash.com/photo-1661920538067-c48451160c72?w=1200&h=630&q=80&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1578874691223-64558a3ca096?w=1200&h=630&q=80&auto=format&fit=crop"
 ---
 
 Es la pregunta que me hacen al menos dos veces por semana en Gym Cobalto: "Edwin, ¿hago cardio o pesas para bajar de peso?"
