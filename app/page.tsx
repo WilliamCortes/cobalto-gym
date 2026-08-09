@@ -11,6 +11,7 @@ import Location from "@/components/landing/Location";
 import CtaSection from "@/components/landing/CtaSection";
 import Footer from "@/components/landing/Footer";
 import WaFloat from "@/components/landing/WaFloat";
+import ChatBot from "@/components/landing/ChatBot";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
       </main>
       <Footer />
       <WaFloat />
+      <ChatBot />
     </>
   );
 }
