@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect, type KeyboardEvent, type FormEvent } from "react";
+import Image from "next/image";
 
 type Role = "bot" | "user";
 interface Msg { role: Role; text: string; }
@@ -207,11 +208,10 @@ export default function ChatBot() {
           }}>
             <div style={{
               width: 36, height: 36, borderRadius: "50%",
-              background: "rgba(255,255,255,.15)",
+              overflow: "hidden",
               display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 16,
             }}>
-              🤖
+              <Image src="/chatbot-icon-2.png" alt="Asistente" width={36} height={36} style={{ objectFit: "cover" }} />
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 700, fontSize: 14, color: "#fff", lineHeight: 1.2 }}>
@@ -368,19 +368,20 @@ export default function ChatBot() {
           position: "fixed", bottom: 100, right: 28, zIndex: 999,
           width: 52, height: 52,
           borderRadius: "50%",
-          background: open
-            ? "rgba(22,163,74,.2)"
-            : "linear-gradient(135deg,#16A34A,#15803d)",
-          border: open ? "2px solid #16A34A" : "none",
-          boxShadow: open ? "none" : "0 4px 20px rgba(22,163,74,.45)",
+          background: open ? "rgba(22,163,74,.15)" : "#000",
+          border: open ? "2px solid #16A34A" : "2px solid #16A34A",
+          boxShadow: open ? "none" : "0 4px 20px rgba(22,163,74,.5)",
           cursor: "pointer",
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: open ? 20 : 22,
-          color: "#fff",
+          overflow: "hidden",
+          padding: 0,
           transition: "all .2s",
         }}
       >
-        {open ? "✕" : "🤖"}
+        {open
+          ? <span style={{ fontSize: 20, color: "#16A34A", fontWeight: 700 }}>✕</span>
+          : <Image src="/chatbot-icon-2.png" alt="Asistente Gym Cobalto" width={52} height={52} style={{ objectFit: "cover" }} />
+        }
       </button>
 
       <style>{`
